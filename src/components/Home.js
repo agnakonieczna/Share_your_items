@@ -1,9 +1,14 @@
 import React from 'react';
+import HomeBanner from './HomeBanner';
+import HomeThreeColumns from './HomeThreeColumns';
 
 class Home extends React.Component {
     render() {
         return(
-            <div>Home</div>
+            <div className="container">
+                <HomeBanner />
+                <HomeThreeColumns />
+            </div>
         )
     }
 }

@@ -1,0 +1,39 @@
+.three-columns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+    background: transparent url('../../assets/3\ Columns\ Background@2x.png') 0% 0% no-repeat padding-box;
+}
+
+.three-columns__col {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 20rem;
+}
+
+.three-columns__col__number {
+    font-size: 5rem;
+    font-weight: 300;
+    color: $font-color-brown;
+    margin-bottom: 1rem;
+}
+
+.three-columns__col__title {
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: $font-color-dark;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.three-columns__col__text {
+    font-size: 1rem;
+    font-family: "Merriweather";
+    letter-spacing: -0.32px;
+    color: $font-color-dark;
+    text-align: center;
+}
