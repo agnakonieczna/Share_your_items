@@ -57,7 +57,7 @@
     cursor: pointer;
 }
 
-.active-link {
+.active {
     border: 0.05rem solid $font-color-light;
     padding: 0.3rem 0.6rem;
 }
@@ -76,7 +76,6 @@
 }
 
 .banner__content__title {
-    font-size: 1.75rem;
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -97,21 +96,9 @@
 }
 
 .banner__content__btn {
-    background-color: transparent;
-    border: 0.05rem solid $font-color-dark;
-    width: 14.75rem;
-    height: 5.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include btn;
 }
 
 .banner__content__btns a {
-    color: $font-color-dark;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    padding: 1rem;
-    font-weight: 300;
-    font-family: 'Open sans';
+    @include link;
 }

@@ -1,0 +1,38 @@
+.about-us {
+    background-color: $background-color;
+    display: flex;
+}
+
+.about-us__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.about-us__title {
+    margin-bottom: 1.5rem;
+}
+
+.about-us__decoration {
+    height: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.about-us__text {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.about-us__signature {
+    height: 5rem;
+    margin-top: 3rem;
+    margin-right: 6.5rem;
+    align-self: flex-end;
+}
+
+.about-us__img {
+    width: 50%;
+}

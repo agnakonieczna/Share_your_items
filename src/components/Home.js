@@ -1,6 +1,8 @@
 import React from 'react';
 import HomeBanner from './HomeBanner';
 import HomeThreeColumns from './HomeThreeColumns';
+import HomeAboutApp from './HomeAboutApp';
+import HomeAboutUs from './HomeAboutUs';
 
 class Home extends React.Component {
     render() {
@@ -8,6 +10,8 @@ class Home extends React.Component {
             <div className="container">
                 <HomeBanner />
                 <HomeThreeColumns />
+                <HomeAboutApp />
+                <HomeAboutUs />
             </div>
         )
     }

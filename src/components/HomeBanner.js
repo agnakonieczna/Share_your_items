@@ -1,8 +1,9 @@
 import React from "react";
 import homeImg from "../assets/Home-Hero-Image.jpg";
 import decoration from "../assets/Decoration.svg";
-import { HashRouter as Router, NavLink as Link } from "react-router-dom";
+import { HashRouter as Router, NavLink, Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+
 
 class HomeBanner extends React.Component {
   render() {
@@ -21,10 +22,10 @@ class HomeBanner extends React.Component {
               <Link to="/rejestracja">Załóż konto</Link>
             </nav>
             <nav className="header__nav-page">
-              <Link activeClassName="active-link" exact to="/">Start</Link>
+              <NavLink activeClassName="active" exact to="/">Start</NavLink>
               <ScrollLink
                 to="o-co-chodzi"
-                activeClass="active-link"
+                activeClass="active"
                 spy={true}
                 smooth={true}
                 offset={-70}
@@ -33,7 +34,8 @@ class HomeBanner extends React.Component {
                 O co chodzi?
               </ScrollLink>
               <ScrollLink
-                to=""
+                to="o-nas"
+                activeClass="active"
                 spy={true}
                 smooth={true}
                 offset={-70}
@@ -43,6 +45,7 @@ class HomeBanner extends React.Component {
               </ScrollLink>
               <ScrollLink
                 to=""
+                activeClass="active"
                 spy={true}
                 smooth={true}
                 offset={-70}
@@ -52,6 +55,7 @@ class HomeBanner extends React.Component {
               </ScrollLink>
               <ScrollLink
                 to=""
+                activeClass="active"
                 spy={true}
                 smooth={true}
                 offset={-70}

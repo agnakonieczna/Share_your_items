@@ -1,0 +1,20 @@
+@mixin btn {
+    background-color: transparent;
+    border: 0.05rem solid $font-color-dark;
+    width: 14.75rem;
+    height: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@mixin link {
+    color: $font-color-dark;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    padding: 1rem;
+    font-weight: 300;
+    font-family: 'Open sans';
+}

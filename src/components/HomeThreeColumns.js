@@ -5,7 +5,7 @@ class HomeThreeColumns extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, beatae.",
+      text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
       content: [
         {
           id: 1,

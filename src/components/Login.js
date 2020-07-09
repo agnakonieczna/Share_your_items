@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, NavLink as Link } from 'react-router-dom';
+import { HashRouter as Router, Link } from 'react-router-dom';
 import { Link as ScrollLink } from "react-scroll";
 
 class Login extends React.Component {
@@ -12,7 +12,7 @@ class Login extends React.Component {
                     <Link to="/rejestracja">Załóż konto</Link> 
                 </nav>
                 <nav className="header__nav-page">
-                    <Link to="/">Start</Link>
+                    <Link exact to="/">Start</Link>
                     <ScrollLink to="o-co-chodzi"
                         spy={true}
                         smooth={true}
