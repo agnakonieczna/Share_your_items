@@ -3,6 +3,8 @@ import HomeBanner from './HomeBanner';
 import HomeThreeColumns from './HomeThreeColumns';
 import HomeAboutApp from './HomeAboutApp';
 import HomeAboutUs from './HomeAboutUs';
+import HomeWhoWeSupport from './HomeWhoWeSupport';
+import Footer from './Footer';
 
 class Home extends React.Component {
     render() {
@@ -12,6 +14,8 @@ class Home extends React.Component {
                 <HomeThreeColumns />
                 <HomeAboutApp />
                 <HomeAboutUs />
+                <HomeWhoWeSupport />
+                <Footer />
             </div>
         )
     }

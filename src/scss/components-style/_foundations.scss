@@ -1,0 +1,39 @@
+.foundation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.foundation__text {
+    width: 35rem;
+    text-align: center;
+    margin: 2rem 0;
+    line-height: 1.4;
+    font-size: 1.2rem;
+}
+
+.foundation__list {
+    width: 60rem;
+}
+
+.foundation__list__item {
+    padding: 2rem 0;
+    border-bottom: 0.05rem solid $font-color-dark;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $font-alt;
+    color: $font-color-dark;
+}
+
+.foundation__list__item__title {
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.foundation__list__item__items {
+    font-weight: 300;
+}
+
