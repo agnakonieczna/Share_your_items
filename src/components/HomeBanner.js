@@ -28,7 +28,6 @@ class HomeBanner extends React.Component {
                 activeClass="active"
                 spy={true}
                 smooth={true}
-                offset={-70}
                 duration={500}
               >
                 O co chodzi?
@@ -38,27 +37,24 @@ class HomeBanner extends React.Component {
                 activeClass="active"
                 spy={true}
                 smooth={true}
-                offset={-70}
                 duration={500}
               >
                 O nas
               </ScrollLink>
               <ScrollLink
-                to=""
+                to="fundacje-i-organizacje"
                 activeClass="active"
                 spy={true}
                 smooth={true}
-                offset={-70}
                 duration={500}
               >
-                Fundacja i organizacje
+                Fundacje i organizacje
               </ScrollLink>
               <ScrollLink
-                to=""
+                to="kontakt"
                 activeClass="active"
                 spy={true}
                 smooth={true}
-                offset={-70}
                 duration={500}
               >
                 Kontakt
@@ -70,7 +66,7 @@ class HomeBanner extends React.Component {
               Zacznij pomagać!<br></br>Oddaj niechciane rzeczy w zaufane ręce
             </h1>
             <img
-              className="banner__content__img"
+              className="decoration"
               src={decoration}
               alt="decoration"
             />

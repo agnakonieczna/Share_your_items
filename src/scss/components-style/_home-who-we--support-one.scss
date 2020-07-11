@@ -1,11 +1,11 @@
-.foundation {
+.who-we-support-one {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.foundation__text {
+.who-we-support-one__text {
     width: 35rem;
     text-align: center;
     margin: 2rem 0;
@@ -13,11 +13,11 @@
     font-size: 1.2rem;
 }
 
-.foundation__list {
+.who-we-support-one__list {
     width: 60rem;
 }
 
-.foundation__list__item {
+.who-we-support-one__list__item {
     padding: 2rem 0;
     border-bottom: 0.05rem solid $font-color-dark;
     display: flex;
@@ -27,13 +27,33 @@
     color: $font-color-dark;
 }
 
-.foundation__list__item__title {
+.who-we-support-one__list__item__title {
     font-weight: 300;
     font-size: 1.2rem;
     margin-bottom: 0.4rem;
 }
 
-.foundation__list__item__items {
+.who-we-support-one__list__item__items {
     font-weight: 300;
+}
+
+.page-numbers-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.page-number {
+    font-family: "Open sans";
+    background-color: transparent;
+    margin-right: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+}
+
+.page-number-border {
+    border: 0.05rem solid #707070;
 }
 

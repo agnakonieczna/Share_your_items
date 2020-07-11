@@ -10,11 +10,6 @@
     margin-bottom: 1.5rem;
 }
 
-.who-we-support__decoration {
-    height: 1.5rem;
-    margin-bottom: 2.5rem;
-}
-
 .who-we-support__btns {
    display: flex;
    justify-content: center;
@@ -30,5 +25,9 @@
     margin: 0 1.5rem;
     color: $font-color-dark;
     border: none;
+}
+
+.who-we-support__btn-border {
+    outline: none;
     border: 0.05rem solid $font-color-dark;
 }

@@ -45,7 +45,7 @@ class HomeAboutApp extends React.Component {
          <section className="about-app" id="o-co-chodzi">
         <h1 className="about-app__title">Wystarczą 4 proste kroki</h1>
         <img
-          className="about-app__img"
+          className="decoration"
           src={decoration}
           alt="decoration"
         />

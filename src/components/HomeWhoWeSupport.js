@@ -1,62 +1,20 @@
 import React from "react";
 import decoration from "../assets/Decoration.svg";
-import Foundations from "./Foundations";
+import HomeWhoWeSupportOne from "./HomeWhoWeSupportOne";
+import data from './data';
 
 class HomeWhoWeSupport extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      foundationShow: false,
+      data: data,
+      foundationShow: true,
       organisationsShow: false,
       collectionsShow: false,
       foundationText:
         "W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.",
-      foundationsData: [
-        {
-          id: 1,
-          title: "Fundacja “Dbam o Zdrowie”",
-          aims:
-            "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
-          items: "ubrania, jedzenie, sprzęt AGD, meble, zabawki",
-        },
-        {
-          id: 2,
-          title: "Fundacja “Dla dzieci”",
-          aims: "Cel i misja: Pomoc dzieciom z ubogich rodzin.",
-          items: "ubrania, meble, zabawki",
-        },
-        {
-          id: 3,
-          title: "Fundacja “Bez domu”",
-          aims:
-            "Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.",
-          items: "ubrania, jedzenie, ciepłe koce",
-        },
-        {
-          id: 4,
-          title: "Fundacja “Dbam o Zdrowie”",
-          aims:
-            "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
-          items: "ubrania, jedzenie, sprzęt AGD, meble, zabawki",
-        },
-        {
-          id: 5,
-          title: "Fundacja “Dla dzieci”",
-          aims: "Cel i misja: Pomoc dzieciom z ubogich rodzin.",
-          items: "ubrania, meble, zabawki",
-        },
-        {
-          id: 6,
-          title: "Fundacja “Bez domu”",
-          aims:
-            "Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.",
-          items: "ubrania, jedzenie, ciepłe koce",
-        },
-      ],
-      oragisationText: "",
-      organisationsData: [],
-      collectionText: "",
-      collectionsData: [],
+      organisationText: "W naszej bazie znajdziesz listę zweryfikowanych Organizacji pozarządowych, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.",
+      collectionText: "Nasza baza zawiera również spis zbiórek lokalnych. Sprawdź czy któraś z nich jest w Twojej okolicy",
     };
   }
 
@@ -86,38 +44,62 @@ class HomeWhoWeSupport extends React.Component {
 
   render() {
     return (
-      <section className="who-we-support">
+      <section className="who-we-support" id="fundacje-i-organizacje">
         <h1 className="who-we-support__title">Komu pomagamy?</h1>
-        <img
-          className="who-we-support__decoration"
-          src={decoration}
-          alt="decoration"
-        />
+        <img className="decoration" src={decoration} alt="decoration" />
         <div className="who-we-support__btns">
-          <button className="who-we-support__btn" onClick={this.foundationShow}>
+          <button
+            className={
+              this.state.foundationShow
+                ? "who-we-support__btn who-we-support__btn-border"
+                : "who-we-support__btn"
+            }
+            id="foundations"
+            onClick={this.foundationShow}
+          >
             Fundacjom
           </button>
           <button
-            className="who-we-support__btn"
+            className={
+              this.state.organisationsShow
+                ? "who-we-support__btn who-we-support__btn-border"
+                : "who-we-support__btn"
+            }
+            id="organisations"
             onClick={this.organisationsShow}
           >
             Organizacjom<br></br>pozarządowym
           </button>
           <button
-            className="who-we-support__btn"
+             className={
+              this.state.collectionsShow
+                ? "who-we-support__btn who-we-support__btn-border"
+                : "who-we-support__btn"
+            }
+            id="collections"
             onClick={this.collectionsShow}
           >
             Lokalnym<br></br> zbiórkom
           </button>
         </div>
         {this.state.foundationShow && (
-          <Foundations
-            foundationText={this.state.foundationText}
-            foundationsData={this.state.foundationsData}
+          <HomeWhoWeSupportOne
+            text={this.state.foundationText}
+            data={this.state.data.foundations}
           />
         )}
-        {this.state.organisationsShow && <p>Organizacje</p>}
-        {this.state.collectionsShow && <p>Zbiórki</p>}
+        {this.state.organisationsShow && (
+          <HomeWhoWeSupportOne
+            text={this.state.organisationText}
+            data={this.state.data.organisations}
+          />
+        )}
+        {this.state.collectionsShow && (
+          <HomeWhoWeSupportOne
+            text={this.state.collectionText}
+            data={this.state.data.collections}
+          />
+        )}
       </section>
     );
   }

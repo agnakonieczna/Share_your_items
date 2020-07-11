@@ -10,7 +10,7 @@ class HomeAboutUs extends React.Component {
         <div className="about-us__wrapper">
           <h1 className="about-us__title">O nas</h1>
           <img
-            className="about-us__decoration"
+            className="decoration"
             src={decoration}
             alt="decoration"
           />

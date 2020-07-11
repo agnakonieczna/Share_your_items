@@ -32,7 +32,7 @@ class HomeThreeColumns extends React.Component {
         {this.state.content.map((el) => {
           return (
             <HomeColumn
-              id={el.id}
+              key={el.id}
               number={el.number}
               title={el.title}
               text={this.state.text}
