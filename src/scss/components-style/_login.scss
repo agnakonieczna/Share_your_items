@@ -1,5 +1,5 @@
 .login {
-    height: $banner-height;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,4 +72,14 @@
 
 .login-error {
     border-bottom: 0.0825rem solid $error-msg;
+}
+
+.login__register__content {
+    width: 24rem;
+    height: 20rem;
+    background-color: $background-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
