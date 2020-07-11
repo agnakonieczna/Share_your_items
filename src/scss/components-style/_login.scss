@@ -1,0 +1,75 @@
+.login {
+    height: $banner-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.login__title {
+    margin-bottom: 2rem;
+}
+
+.login__form {
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login__form__content {
+    width: 24rem;
+    height: 15rem;
+    background-color: $background-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__form label {
+    padding-left: 10%;
+    align-self: start;
+    margin-top: 1rem;
+}
+
+.login__input {
+    width: 80%;
+    height: 1.5rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.0825rem solid #3C3C3C26;    
+    font-family: "Open sans";
+}
+
+.login__links {
+    margin-top: 2rem;
+    width: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 300;
+}
+
+.login__links a, .login__links input {
+    display: inline-block;
+    font-size: 1rem;
+    background-color: transparent;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    font-family: "Open sans";
+    color: #000;
+}
+
+.login__links input {
+    border: 0.0825rem solid #3C3C3C26;
+    width: 6rem;
+    height: auto;
+    text-align: center;
+}
+
+.login-error {
+    border-bottom: 0.0825rem solid $error-msg;
+}
