@@ -6,14 +6,13 @@ import Register from './components/Register';
 import Logout from './components/Logout';
 import Form from './components/Form';
 
-
 function App() {
   return (
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/logowanie" component={Login} />
-          <Route path="/rejestracja" component={Register} />
+          <Route path="/rejestracja" component={Register} /> 
           <Route path="/wylogowano" component={Logout} />
           <Route path="/oddaj-rzeczy" component={Form} />
         </Switch>

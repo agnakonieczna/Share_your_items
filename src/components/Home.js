@@ -9,14 +9,14 @@ import Footer from './Footer';
 class Home extends React.Component {
     render() {
         return(
-            <div className="container">
+            <>
                 <HomeBanner />
                 <HomeThreeColumns />
                 <HomeAboutApp />
                 <HomeAboutUs />
                 <HomeWhoWeSupport />
                 <Footer />
-            </div>
+            </>
         )
     }
 }

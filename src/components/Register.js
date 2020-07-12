@@ -2,8 +2,11 @@ import React from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import decoration from "../assets/Decoration.svg";
+import { withFirebase } from "./Firebase";
+import { withRouter } from 'react-router-dom';
 
-class Register extends React.Component {
+
+class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +15,8 @@ class Register extends React.Component {
       passwordRepeat: "",
       emailErr: "",
       passwordErr: "",
-      passwordRepeatErr: ""
+      passwordRepeatErr: "",
+      error: null
     };
   }
 
@@ -58,13 +62,23 @@ class Register extends React.Component {
     let isValid = this.validate();
 
     if (isValid) {
-      this.setState({
-        email: "",
-        password: "",
-        passwordRepeat: "",
-        emailErr: "",
-        passwordErr: "",
-        passwordRepeatErr: ""
+      console.log("is valid")
+      const {email, password} = this.state;
+
+      this.props.firebase.doCreateUserWithEmailAndPassword(email, password)
+      .then(authUser => {
+        this.setState({
+          email: "",
+          password: "",
+          passwordRepeat: "",
+          emailErr: "",
+          passwordErr: "",
+          passwordRepeatErr: ""
+        });
+        this.props.history.push("/");
+      })
+      .catch(error => {
+        this.setState({ error });
       });
     }
   };
@@ -78,7 +92,7 @@ class Register extends React.Component {
             <Link to="/rejestracja">Załóż konto</Link>
           </nav>
           <nav className="header__nav-page">
-            <Link exact to="/">
+            <Link to="/">
               Start
             </Link>
             <ScrollLink
@@ -159,5 +173,7 @@ class Register extends React.Component {
     );
   }
 }
+
+const Register = withRouter(withFirebase(RegisterForm))
 
 export default Register;

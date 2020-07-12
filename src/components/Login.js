@@ -2,8 +2,10 @@ import React from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import decoration from "../assets/Decoration.svg";
+import { withFirebase } from "./Firebase";
+import { withRouter } from "react-router-dom";
 
-class Login extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,14 +13,15 @@ class Login extends React.Component {
       password: "",
       emailErr: "",
       passwordErr: "",
+      error: null,
     };
   }
 
   validate = () => {
     let emailErr = "";
-    let passwordErr = ""
+    let passwordErr = "";
 
-    const {email, password} = this.state;
+    const { email, password } = this.state;
 
     const emailValidation = function validateEmail(email) {
       var re = /\S+@\S+\.\S+/;
@@ -29,35 +32,44 @@ class Login extends React.Component {
       emailErr = "Podany email jest nieprawidłowy!";
     }
 
-    if(password.length < 5) {
+    if (password.length < 5) {
       passwordErr = "Podane hasło jest za krótkie!";
     }
 
-    if(emailErr || passwordErr) {
+    if (emailErr || passwordErr) {
       this.setState({
         emailErr,
-        passwordErr
-      })
-      return false
+        passwordErr,
+      });
+      return false;
     }
 
-    return true
-  }
+    return true;
+  };
 
   handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    let isValid = this.validate()
-    
-    if(isValid) {
-      this.setState({
-        email: "",
-      password: "",
-      emailErr: "",
-      passwordErr: "",
-      })
+    let isValid = this.validate();
+
+    if (isValid) {
+      const { email, password } = this.state;
+
+      this.props.firebase
+        .doSignInWithEmailAndPassword(email, password)
+        .then(() => {
+          this.setState({
+            email: "",
+            password: "",
+            emailErr: "",
+            passwordErr: "",
+          });
+          this.props.history.push("/");
+        })
+        .catch((error) => {
+          this.setState({ error });
+        });
     }
-
   };
 
   render() {
@@ -69,9 +81,7 @@ class Login extends React.Component {
             <Link to="/rejestracja">Załóż konto</Link>
           </nav>
           <nav className="header__nav-page">
-            <Link exact to="/">
-              Start
-            </Link>
+            <Link to="/">Start</Link>
             <ScrollLink
               to="o-co-chodzi"
               spy={true}
@@ -94,7 +104,7 @@ class Login extends React.Component {
               <label htmlFor="email">Email</label>
               <br></br>
               <input
-                 className={
+                className={
                   this.state.emailErr
                     ? "login__input login-error"
                     : "login__input"
@@ -110,11 +120,11 @@ class Login extends React.Component {
               <label htmlFor="password">Hasło</label>
               <br></br>
               <input
-                    className={
-                      this.state.passwordErr
-                        ? "login__input login-error"
-                        : "login__input"
-                    }
+                className={
+                  this.state.passwordErr
+                    ? "login__input login-error"
+                    : "login__input"
+                }
                 id="password"
                 type="password"
                 value={this.state.password}
@@ -134,5 +144,7 @@ class Login extends React.Component {
     );
   }
 }
+
+const Login = withRouter(withFirebase(LoginForm));
 
 export default Login;

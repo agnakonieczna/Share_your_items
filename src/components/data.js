@@ -22,7 +22,7 @@ const data = {
     },
     {
       id: 4,
-      title: "Fundacja “Dbam o Zdrowie”",
+      title: "Fundacja “Lorem ipsum”",
       aims:
         "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
       items: "ubrania, jedzenie, sprzęt AGD, meble, zabawki",
