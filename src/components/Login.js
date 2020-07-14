@@ -69,6 +69,13 @@ class LoginForm extends React.Component {
         .catch((error) => {
           this.setState({ error });
         });
+
+        this.props.firebase.auth.onAuthStateChanged(authUser => {
+          authUser
+            ? this.props.userLoggedIn(authUser)
+            : this.props.userLoggedOut()
+        });
+    
     }
   };
 

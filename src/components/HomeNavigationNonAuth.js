@@ -7,8 +7,8 @@ function HomeNavigationNonAuth() {
     <Router>
       <header className="header">
         <nav className="header__nav-login">
-          <Link to="/logowanie">Zaloguj się</Link>
-          <Link to="/rejestracja">Załóż konto</Link>
+          <Link className="header__nav-login__login" to="/logowanie">Zaloguj się</Link>
+          <Link className="header__nav-login__register" to="/rejestracja">Załóż konto</Link>
         </nav>
         <nav className="header__nav-page">
           <NavLink activeClassName="active" exact to="/">

@@ -3,7 +3,7 @@ import decoration from "../assets/Decoration.svg";
 import fbImg from "../assets/Facebook.svg";
 import InstImg from "../assets/Instagram.svg";
 
-class Footer extends React.Component {
+class HomeFooter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -167,4 +167,4 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer;
+export default HomeFooter;

@@ -27,14 +27,14 @@
     padding: 2rem 3rem;
 }
 
-.header__nav-login a {
+.header__nav-login__login, .header__nav-login__share-items, .header__nav-login__register, .header__nav-login__logout {
     font-size: 0.8125rem;
     margin-left: 1.875rem;
     text-decoration: none;
     color: $font-color-light;
 }
 
-.header__nav-login > a:last-child {
+.header__nav-login__register {
     border: 0.05rem solid $decoration-light-color;
     padding: 0.5rem;
 }
@@ -96,3 +96,22 @@
 .banner__content__btns a {
     @include link;
 }
+
+.header__nav-login__share-items {
+    font-weight: 600;
+    border: 0.05rem solid $decoration-light-color;
+    padding: 0.3rem 0.6rem;    
+}
+
+
+.header__nav-login__logout {
+    border: none;
+}
+
+.header__nav-login__name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+
+

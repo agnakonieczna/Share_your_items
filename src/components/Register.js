@@ -62,7 +62,6 @@ class RegisterForm extends React.Component {
     let isValid = this.validate();
 
     if (isValid) {
-      console.log("is valid")
       const {email, password} = this.state;
 
       this.props.firebase.doCreateUserWithEmailAndPassword(email, password)
@@ -75,11 +74,20 @@ class RegisterForm extends React.Component {
           passwordErr: "",
           passwordRepeatErr: ""
         });
+        console.log('redirect?');
         this.props.history.push("/");
+       
       })
       .catch(error => {
         this.setState({ error });
       });
+
+      this.props.firebase.auth.onAuthStateChanged(authUser => {
+        authUser
+          ? this.props.userLoggedIn(authUser)
+          : this.props.userLoggedOut()
+      });
+
     }
   };
 

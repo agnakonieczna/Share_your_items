@@ -1,7 +1,8 @@
 import React from "react";
 import decoration from "../assets/Decoration.svg";
 import { HashRouter as Router, Link } from "react-router-dom";
-import HomeNavigationNonAuth from './HomeNavigationAuth';
+import HomeNavigationNonAuth from './HomeNavigationNonAuth';
+import HomeNavigationAuthContainer from "./HomeNavigationAuthContainer";
 
 class HomeBanner extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class HomeBanner extends React.Component {
       <section className="banner">
        <div className="banner__img-wrapper"></div>
        <Router>
-         <HomeNavigationNonAuth />
+         {this.props.authUser ? <HomeNavigationAuthContainer /> : <HomeNavigationNonAuth />}
           <div className="banner__content">
             <h1 className="banner__content__title">
               Zacznij pomagać!<br></br>Oddaj niechciane rzeczy w zaufane ręce

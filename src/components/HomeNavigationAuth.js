@@ -8,8 +8,9 @@ function HomeNavigationAuth(props) {
     <Router>
       <header className="header">
         <nav className="header__nav-login">
-          <Link to="/oddaj-rzeczy">Oddaj rzeczy</Link>
-          <Link to="/wylogowano" onClick={props.firebase.doSignOut}>Wyloguj</Link>
+          <span className="header__nav-login__name">Cześć, {props.authUser.email}!</span>
+          <Link className="header__nav-login__share-items" to="/oddaj-rzeczy">Oddaj rzeczy</Link>
+          <Link className="header__nav-login__logout" to="/wylogowano" onClick={props.firebase.doSignOut}>Wyloguj</Link>
         </nav>
         <nav className="header__nav-page">
           <NavLink activeClassName="active" exact to="/">
