@@ -1,12 +1,12 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'; 
-import Home from './components/Home';
+import Home from './components/Home/components/Home';
 import Logout from './components/Logout';
-import Form from './components/Form';
 import store from './redux/store';
 import { Provider } from "react-redux";
 import LoginContainer from './components/LoginContainer';
 import RegisterContainer from './components/RegisterContainer';
+import FormPage from './components/Form/components/FormPage';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
             <Route path="/logowanie" component={LoginContainer} />
             <Route path="/rejestracja" component={RegisterContainer} /> 
             <Route path="/wylogowano" component={Logout} />
-            <Route path="/oddaj-rzeczy" component={Form} />
+            <Route path="/oddaj-rzeczy" component={FormPage} />
           </Switch>
         </Router>
       </Provider>

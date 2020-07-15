@@ -1,7 +1,7 @@
-import React from "react";
-import decoration from "../assets/Decoration.svg";
-import aboutUsImg from "../assets/People.jpg";
-import signature from "../assets/Signature.svg";
+import React from 'react';
+import decoration from '../../../assets/Decoration.svg';
+import aboutUsImg from '../../../assets/People.jpg';
+import signature from '../../../assets/Signature.svg';
 
 class HomeAboutUs extends React.Component {
   render() {

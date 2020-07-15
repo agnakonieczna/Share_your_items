@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import HomeBanner from "./HomeBanner";
+import HomeNavigationAuth from "../components/HomeNavigationAuth";
 
 function mapState(state) {
     return {
@@ -7,4 +7,4 @@ function mapState(state) {
     }
 }
 
-export default connect(mapState)(HomeBanner);
+export default connect(mapState)(HomeNavigationAuth);

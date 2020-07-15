@@ -1,17 +1,18 @@
 import React from 'react';
-import HomeFooter from './HomeFooter';
+import HomeFooter from '../../Home/components/HomeFooter';
 import FormBanner from './FormBanner';
+import Form from './Form';
 
-class Form extends React.Component {
+class FormPage extends React.Component {
     render() {
         return(
             <div>
                 <FormBanner />
-                <div>Form</div>
+                <Form />
                 <HomeFooter />
             </div>
         )
     }
 }
 
-export default Form;
+export default FormPage;

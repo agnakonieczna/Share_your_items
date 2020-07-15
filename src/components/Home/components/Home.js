@@ -1,11 +1,10 @@
 import React from 'react';
-// import HomeBanner from './HomeBanner';
 import HomeThreeColumns from './HomeThreeColumns';
 import HomeAboutApp from './HomeAboutApp';
 import HomeAboutUs from './HomeAboutUs';
 import HomeWhoWeSupport from './HomeWhoWeSupport';
-import Footer from './HomeFooter';
-import HomeBannerContainer from './HomeBannerContainer';
+import HomeFooter from './HomeFooter';
+import HomeBannerContainer from '../containers/HomeBannerContainer';
 
 class Home extends React.Component {
     render() {
@@ -16,7 +15,7 @@ class Home extends React.Component {
                 <HomeAboutApp />
                 <HomeAboutUs />
                 <HomeWhoWeSupport />
-                <Footer />
+                <HomeFooter />
             </>
         )
     }

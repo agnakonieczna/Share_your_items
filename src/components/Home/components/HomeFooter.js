@@ -1,7 +1,7 @@
-import React from "react";
-import decoration from "../assets/Decoration.svg";
-import fbImg from "../assets/Facebook.svg";
-import InstImg from "../assets/Instagram.svg";
+import React from 'react';
+import decoration from '../../../assets/Decoration.svg';
+import fbImg from '../../../assets/Facebook.svg';
+import InstImg from '../../../assets/Instagram.svg';
 
 class HomeFooter extends React.Component {
   constructor(props) {

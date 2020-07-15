@@ -1,5 +1,5 @@
-import React from "react";
-import HomeColumn from "./HomeColumn";
+import React from 'react';
+import HomeColumn from './HomeColumn';
 
 class HomeThreeColumns extends React.Component {
   constructor(props) {

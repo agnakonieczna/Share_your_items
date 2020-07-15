@@ -1,6 +1,6 @@
-import React from "react";
-import decoration from "../assets/Decoration.svg";
-import HomeWhoWeSupportOne from "./HomeWhoWeSupportOne";
+import React from 'react';
+import decoration from '../../../assets/Decoration.svg';
+import HomeWhoWeSupportOne from './HomeWhoWeSupportOne';
 import data from './data';
 
 class HomeWhoWeSupport extends React.Component {

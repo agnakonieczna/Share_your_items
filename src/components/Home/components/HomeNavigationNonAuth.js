@@ -1,16 +1,14 @@
-import React from "react";
-import { HashRouter as Router, NavLink, Link } from "react-router-dom";
-import { Link as ScrollLink } from "react-scroll";
-import { withFirebase } from '../components/Firebase';
+import React from 'react';
+import { HashRouter as Router, NavLink, Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 
-function HomeNavigationAuth(props) {
+function HomeNavigationNonAuth() {
   return (
     <Router>
       <header className="header">
         <nav className="header__nav-login">
-          <span className="header__nav-login__name">Cześć, {props.authUser.email}!</span>
-          <Link className="header__nav-login__share-items" to="/oddaj-rzeczy">Oddaj rzeczy</Link>
-          <Link className="header__nav-login__logout" to="/wylogowano" onClick={props.firebase.doSignOut}>Wyloguj</Link>
+          <Link className="header__nav-login__login" to="/logowanie">Zaloguj się</Link>
+          <Link className="header__nav-login__register" to="/rejestracja">Załóż konto</Link>
         </nav>
         <nav className="header__nav-page">
           <NavLink activeClassName="active" exact to="/">
@@ -58,4 +56,4 @@ function HomeNavigationAuth(props) {
   );
 }
 
-export default withFirebase(HomeNavigationAuth);
+export default HomeNavigationNonAuth;
