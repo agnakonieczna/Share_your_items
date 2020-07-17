@@ -1,92 +1,136 @@
-import React from 'react';
-import Step1 from './Step1';
-import Step2 from './Step2';
-import Step3 from './Step3';
-import Step4 from './Step4';
-import Summary from './Summary';
+import React from "react";
+import Step4 from "./Step4";
+import Summary from "./Summary";
+import ThankYou from "./ThankYou";
+import Step1Container from "../containers/Step1Container";
+import Step2Container from "../containers/Step2Container";
+import Step3Container from "../containers/Step3Container";
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        display1: "block",
-        display2: "none",
-        display3: "none",
-        display4: "none",
-        displaySummary: "none" 
+      displayStep1: "block",
+      displayStep2: "none",
+      displayStep3: "none",
+      displayStep4: "none",
+      displaySummary: "none",
+      displayThankYou: "none",
     };
   }
 
-  handleClick1 = (e) => {
-    e.preventDefault()
+  handleClickNext1 = (e) => {
+    e.preventDefault();
 
     this.setState({
-        display1: "none",
-        display2: "block"
+      displayStep1: "none",
+      displayStep2: "block",
+    });
+  };
+
+  handleClickBack2 = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      displayStep1: "block",
+      displayStep2: "none",
+    });
+  };
+
+  handleClickNext2 = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      displayStep2: "none",
+      displayStep3: "block",
+    });
+  };
+
+  handleClickBack3 = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      displayStep2: "block",
+      displayStep3: "none",
+    });
+  };
+
+  handleClickNext3 = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      displayStep3: "none",
+      displayStep4: "block",
+    });
+  };
+
+  handleClickBack4 = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      displayStep3: "block",
+      displayStep4: "none",
+    });
+  };
+
+  handleClickNext4 = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      displayStep4: "none",
+      displaySummary: "block",
+    });
+  };
+
+  handleClickBack5 = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      displayStep4: "block",
+      displaySummary: "none",
+    });
+
+  }
+
+  handleSubmit = () => {
+    console.log("submit");
+    this.setState({
+      displaySummary: "none",
+      displayThankYou: "block"
     })
-  }
-
-  handleClick2 = (e) => {
-    e.preventDefault()
-
-      this.setState({
-          display1: "block",
-          display2: "none"
-      })
-  }
-
-  handleClick3 = (e) => {
-    e.preventDefault()
-
-      this.setState({
-          display2: "none",
-          display3: "block"
-      })
-  }
-
-  handleClick4 = (e) => {
-    e.preventDefault()
-
-      this.setState({
-          display2: "block",
-          display3: "none"
-      })
-  }
-
-  handleClick5 = (e) => {
-    e.preventDefault()
-
-      this.setState({
-        display3: "none",
-        display4: "block"
-      })
-  }
+  };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="form__step-wrapper" style={{display:this.state.display1}}>
-          <Step1 changeDisplay1={this.handleClick1}/>
+        <div style={{ display: this.state.displayStep1 }}>
+          <Step1Container changeDisplayNext={this.handleClickNext1} />
         </div>
-        <div className="form__step-wrapper" style={{display:this.state.display2}}>
-          <Step2 changeDisplay2={this.handleClick2} changeDisplay3={this.handleClick3}/>    
+        <div style={{ display: this.state.displayStep2 }}>
+          <Step2Container
+            changeDisplayNext={this.handleClickNext2}
+            changeDisplayBack={this.handleClickBack2}
+          />
         </div>
-        <div className="form__step-wrapper" style={{display:this.state.display3}}>
-            <Step3 changeDisplay4={this.handleClick2} changeDisplay5={this.handleClick3}/>
+        <div style={{ display: this.state.displayStep3 }}>
+          <Step3Container
+            changeDisplayNext={this.handleClickNext3}
+            changeDisplayBack={this.handleClickBack3}
+          />
         </div>
-        <div className="form__step-wrapper" style={{display:this.state.display4}}>
-            <Step4 />
-          <button id="6">
-            Wstecz
-          </button>
-          <button id="7">Dalej</button>
+        <div style={{ display: this.state.displayStep4 }}>
+          <Step4
+            changeDisplayNext={this.handleClickNext4}
+            changeDisplayBack={this.handleClickBack4}
+          />
         </div>
-        <div className="form__summary-wrapper" style={{display:this.state.displaySummary}}>
-        <Summary />
-          <button id="8">
-            Wstecz
-          </button>
-          <input type="submit" value="Potwierdzam"></input>
+        <div style={{ display: this.state.displaySummary }}>
+          <Summary 
+            changeDisplayBack={this.handleClickBack5}
+          />
+        </div>
+        <div style={{display: this.state.displayThankYou}}>
+          <ThankYou />
         </div>
       </form>
     );

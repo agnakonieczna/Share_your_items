@@ -19,17 +19,18 @@ class Step2 extends React.Component {
     );
   };
 
-  handleClick1 = (e) => {
-    this.props.changeDisplay2(e);
+  handleClickBack = (e) => {
+    this.props.changeDisplayBack(e);
   };
 
-  handleClick2 = (e) => {
-    this.props.changeDisplay3(e);
+  handleClickNext = (e) => {
+    this.props.changeDisplayNext(e);
+    this.props.addBags(this.state.selected)
   };
 
   render() {
     return (
-      <section className="form__step">
+      <>
         <div className="form__step__info">
           <h2 className="form__step__info__title">Ważne!</h2>
           <p>
@@ -39,7 +40,7 @@ class Step2 extends React.Component {
         </div>
         <div className="form__step__content">
           <div className="form__step__content__wrapper">
-          <h2 className="form__step__content__step">Krok 2/4</h2>
+          <h2>Krok 2/4</h2>
           <h1 className="form__step__content__title">
             Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:
           </h1>
@@ -60,16 +61,16 @@ class Step2 extends React.Component {
             <option value="5">5</option>
           </select>
           </div>
-          <div className="form__step__btns">
-            <button className="form__step__btn" id="2" onClick={this.handleClick1}>
+          <div>
+            <button className="form__step__btn form__step__btn-back" id="2" onClick={this.handleClickBack}>
               Wstecz
             </button>
-            <button className="form__step__btn" id="3" onClick={this.handleClick2}>
+            <button className="form__step__btn form__step__btn-next" id="3" onClick={this.handleClickNext}>
               Dalej
             </button>
           </div>
         </div>
-      </section>
+      </>
     );
   }
 }

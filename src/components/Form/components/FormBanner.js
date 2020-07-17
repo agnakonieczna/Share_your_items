@@ -19,7 +19,7 @@ class FormBanner extends React.Component {
               src={decoration}
               alt="decoration"
             />
-            <h1>Wystarczą 4 proste kroki:</h1>
+            <h1 className="form-banner__content__title">Wystarczą 4 proste kroki:</h1>
             <div className="form-banner__steps">
               <div className="form-banner__step">
                 <p>1<br></br>Wybierz<br></br>rzeczy</p>

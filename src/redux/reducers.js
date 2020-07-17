@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import { USER_LOGGED, USER_LOGGED_OUT } from "./actions";
+import { USER_LOGGED, USER_LOGGED_OUT, ADD_TYPE, ADD_BAGS, ADD_LOCALIZATION, ADD_HELP_GROUPS } from "./actions";
 
 const initialUserState = {
     authUser: ""
@@ -22,12 +22,65 @@ function userReducer(state = initialUserState, action) {
     return state
 }
 
+const initialFormState = {
+    type: "",
+    bags: "",
+    localization: "",
+    helpGroups: [],
+    localizationSpecific: "",
+    address: {
+        street: "",
+        city: "",
+        postCode: "",
+        phone:"",
+        date:"",
+        time:"",
+        note:""
+    }
+}
+
+function formReducer(state = initialFormState, action) {
+    if(action.type === ADD_TYPE) {
+        return {
+            ...state,
+            type: action.payload
+        }
+    }
+
+    if(action.type === ADD_BAGS) {
+        return {
+            ...state,
+            bags: action.payload
+        }
+    }
+
+    if(action.type === ADD_LOCALIZATION) {
+        return {
+            ...state,
+            localization: action.payload
+        }
+    }
+
+    if(action.type === ADD_HELP_GROUPS) {
+        return {
+            ...state,
+            helpGroups: action.payload
+        }
+    }
+    
+    return state
+}
+
 export default combineReducers({
     user: userReducer,
+    form: formReducer
 })
 
 // let globalState = {
 //     user: {
-//         authUser: null
+//         authUser: ""
+//     },
+//     form: {
+//         type: ""
 //     }
 // }
