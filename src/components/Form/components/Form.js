@@ -5,6 +5,7 @@ import Step2Container from "../containers/Step2Container";
 import Step3Container from "../containers/Step3Container";
 import Step4Container from "../containers/Step4Container";
 import SummaryContainer from "../containers/SummaryContainer";
+import { withFirebase } from "../../Firebase";
 
 class Form extends React.Component {
   constructor(props) {
@@ -93,7 +94,34 @@ class Form extends React.Component {
   }
 
   handleSubmit = () => {
-    console.log("submit");
+    const {
+      user,
+      bags,
+      type,
+      localization,
+      helpGroups,
+      street,
+      city,
+      postCode,
+      phone,
+      date,
+      hour,
+    } = this.props;
+
+    this.props.firebase.forms().push({
+      user,
+      bags,
+      type,
+      localization,
+      helpGroups,
+      street,
+      city,
+      postCode,
+      phone,
+      date,
+      hour,
+    })
+
     this.setState({
       displaySummary: "none",
       displayThankYou: "block"
@@ -137,4 +165,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default withFirebase(Form);

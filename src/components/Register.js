@@ -16,7 +16,7 @@ class RegisterForm extends React.Component {
       emailErr: "",
       passwordErr: "",
       passwordRepeatErr: "",
-      error: null
+      error: ""
     };
   }
 
@@ -66,6 +66,13 @@ class RegisterForm extends React.Component {
 
       this.props.firebase.doCreateUserWithEmailAndPassword(email, password)
       .then(authUser => {
+        return this.props.firebase
+        .user(authUser.user.uid)
+        .set({
+          email,
+        })
+      })
+      .then(authUser => {
         this.setState({
           email: "",
           password: "",
@@ -74,7 +81,6 @@ class RegisterForm extends React.Component {
           passwordErr: "",
           passwordRepeatErr: ""
         });
-        console.log('redirect?');
         this.props.history.push("/");
        
       })

@@ -37,9 +37,9 @@ class Summary extends React.Component {
                 alt="icon"
               ></img>
               <span>
-                {bags} {bags === "1" ? "worek" : ""}
+                {bags}{bags === "1" ? "worek" : ""}
                 {bags === "2" || bags === "3" ? "worki" : ""}
-                {bags === "5" ? "worków" : ""},{type},
+                {bags === "5" ? "worków" : ""}, {type},
                 {helpGroups.map((el) => {
                   if (el === "kids") {
                     return <span>dzieciom </span>;

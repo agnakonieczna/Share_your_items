@@ -14,6 +14,7 @@ class Firebase {
     constructor() {
         app.initializeApp(firebaseConfig)
         this.auth = app.auth();
+        this.db = app.database();
     }
 
     doCreateUserWithEmailAndPassword = (email, password) => 
@@ -24,12 +25,12 @@ class Firebase {
     this.auth.signInWithEmailAndPassword(email, password);
 
     doSignOut = () => this.auth.signOut();
+
+    user = uid => this.db.ref(`users/${uid}`)
+    users = () => this.db.ref('users');
+    forms = () => this.db.ref(`forms`);
 }
-
-
-
 
 
 export default Firebase;
 
-// var database = firebase.database(app)
