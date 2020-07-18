@@ -80,12 +80,12 @@
 }
 
 .form__step__btn-next {
-    top: 35rem;
+    top: 85%;
     left: 12rem;
 }
 
 .form__step__btn-back {
-    top: 35rem;
+    top: 85%;
     left: 3rem;
 }
 
@@ -151,7 +151,7 @@
 .form__step__content__address div,.form__step__content__time div {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .form__step__content__address__title, .form__step__content__time__title {
@@ -174,7 +174,51 @@
     font-family: "Open sans";
 }
 
+.form__step__content__summary__title {
+  font-weight: 600;
+  margin: 1rem 0;
+}
 
+.form__step__content__summary__row-icons {
+  display: flex;
+  align-items: center;
+}
+
+.form__step__content__summary__icons {
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+.form__step__content__summary__rows-address-and-time {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__step__content__summary__row-address, .form__step__content__summary__row-time {
+  width: 40%;
+}
+
+.form__step__content__summary__row-address__row, .form__step__content__summary__row-time__row  {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.form__step__content__thank-you {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.form__step__content__thank-you__title {
+  margin-bottom: 2rem;
+}
 
 
 

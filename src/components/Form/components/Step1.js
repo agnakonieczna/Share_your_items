@@ -48,8 +48,8 @@ class Step1 extends React.Component {
                 className="form__step__content__radio__input"
                 type="radio"
                 id="clothes-for-reuse"
-                value="clothes-for-reuse"
-                checked={this.state.selected === "clothes-for-reuse"}
+                value="ubrania, które nadają się do ponownego użycia"
+                checked={this.state.selected === "ubrania, które nadają się do ponownego użycia"}
                 onChange={this.handleChange}
               />
               <span className="form__step__content__radio__control"></span>
@@ -63,8 +63,8 @@ class Step1 extends React.Component {
                 className="form__step__content__radio__input"
                 type="radio"
                 id="clothes-to-garbage"
-                value="clothes-to-garbage"
-                checked={this.state.selected === "clothes-to-garbage"}
+                value="ubrania do wyrzucenia"
+                checked={this.state.selected === "ubrania do wyrzucenia"}
                 onChange={this.handleChange}
               />
               <span className="form__step__content__radio__control"></span>
@@ -75,8 +75,8 @@ class Step1 extends React.Component {
                 className="form__step__content__radio__input"
                 type="radio"
                 id="toys"
-                value="toys"
-                checked={this.state.selected === "toys"}
+                value="zabawki"
+                checked={this.state.selected === "zabawki"}
                 onChange={this.handleChange}
               />
               <span className="form__step__content__radio__control"></span>
@@ -87,8 +87,8 @@ class Step1 extends React.Component {
                 className="form__step__content__radio__input"
                 type="radio"
                 id="books"
-                value="books"
-                checked={this.state.selected === "books"}
+                value="książki"
+                checked={this.state.selected === "książki"}
                 onChange={this.handleChange}
               ></input>
               <span className="form__step__content__radio__control"></span>
@@ -99,8 +99,8 @@ class Step1 extends React.Component {
                 className="form__step__content__radio__input"
                 type="radio"
                 id="others"
-                value="others"
-                checked={this.state.selected === "others"}
+                value="inne"
+                checked={this.state.selected === "inne"}
                 onChange={this.handleChange}
               ></input>
               <span className="form__step__content__radio__control"></span>

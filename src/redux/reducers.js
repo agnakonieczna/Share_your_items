@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import { USER_LOGGED, USER_LOGGED_OUT, ADD_TYPE, ADD_BAGS, ADD_LOCALIZATION, ADD_HELP_GROUPS } from "./actions";
+import { USER_LOGGED, USER_LOGGED_OUT, ADD_TYPE, ADD_BAGS, ADD_LOCALIZATION, ADD_HELP_GROUPS, ADD_LOCALIZATION_SPECIFIC, ADD_ADDRESS_AND_TIME } from "./actions";
 
 const initialUserState = {
     authUser: ""
@@ -28,13 +28,13 @@ const initialFormState = {
     localization: "",
     helpGroups: [],
     localizationSpecific: "",
-    address: {
+    addressAndTime: {
         street: "",
         city: "",
         postCode: "",
         phone:"",
         date:"",
-        time:"",
+        hour: "",
         note:""
     }
 }
@@ -67,6 +67,20 @@ function formReducer(state = initialFormState, action) {
             helpGroups: action.payload
         }
     }
+
+    if(action.type === ADD_LOCALIZATION_SPECIFIC) {
+        return {
+            ...state,
+            localizationSpecific: action.payload
+        }
+    }
+
+    if(action.type === ADD_ADDRESS_AND_TIME) {
+        return {
+            ...state,
+            addressAndTime: action.payload
+        }
+    }
     
     return state
 }
@@ -81,6 +95,19 @@ export default combineReducers({
 //         authUser: ""
 //     },
 //     form: {
-//         type: ""
+//         type: "",
+//         bags: "",
+//         localization: "",
+//         helpGroups: [],
+//         localizationSpecific: "",
+//         addressAndTime: {
+//             street: "",
+//             city: "",
+//             postCode: "",
+//             phone:"",
+//             date:"",
+//             hour: "",
+//             note:""
+//         }
 //     }
 // }

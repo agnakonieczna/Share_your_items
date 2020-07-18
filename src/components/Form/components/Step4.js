@@ -5,11 +5,17 @@ class Step4 extends React.Component {
     super(props);
     this.state = {
       street: "",
+      streetErr: "",
       city: "",
-      postalCode: "",
-      telephone: "",
+      cityErr: "",
+      postCode: "",
+      postCodeErr: "",
+      phone: "",
+      phoneErr: "",
       date: "",
+      dateErr: "",
       hour: "",
+      hourErr: "",
       notes: "",
     };
   }
@@ -24,8 +30,56 @@ class Step4 extends React.Component {
     this.props.changeDisplayBack(e);
   };
 
+  // validate = () => {
+  //   let streetErr = "";
+  //   let cityErr = "";
+  //   let postCodeErr = "";
+  //   let phoneErr = "";
+
+  //   if (this.state.street.length < 2) {
+  //     streetErr = "Podana nazwa ulicy jest nieprawidłowa!";
+  //   }
+
+  //   if (this.state.city.length < 2) {
+  //     cityErr = "Podana nazwa miasta jest nieprawidłowa!";
+  //   }
+
+  //   if (
+  //     typeof this.state.postCode !== "number" ||
+  //     this.state.postCode.length < 6 ||
+  //     this.state.postCode[2] !== "-"
+  //   ) {
+  //     postCodeErr = "Podany kod jest nieprawidłowy!";
+  //   }
+
+  //   if (typeof this.state.phone !== "number" || this.state.phone.length > 9) {
+  //     phoneErr = "Podany numer telefonu jest nieprawidłowy!";
+  //   }
+
+  //   if (streetErr || cityErr || postCodeErr || phoneErr) {
+  //     this.setState({
+  //       streetErr,
+  //       cityErr,
+  //       postCodeErr,
+  //       phoneErr,
+  //     });
+  //     return false;
+  //   }
+
+  //   return true;
+  // };
+
   handleClickNext = (e) => {
     this.props.changeDisplayNext(e);
+    this.props.addAddressAndTime({
+      street: this.state.street,
+      city: this.state.city,
+      postCode: this.state.postCode,
+      phone: this.state.phone,
+      date: this.state.date,
+      hour: this.state.hour,
+      note: this.state.note
+    })
   };
 
   render() {
@@ -43,10 +97,11 @@ class Step4 extends React.Component {
             </h1>
             <div className="form__step__content__flex">
               <div className="form__step__content__address">
-                <p className="form__step__content__address__title">Adres odbioru:</p>
+                <p className="form__step__content__address__title">
+                  Adres odbioru:
+                </p>
                 <div>
-                <label htmlFor="street">
-                  Ulica </label>
+                  <label htmlFor="street">Ulica </label>
                   <input
                     className="form__step__content__address__input"
                     type="text"
@@ -55,9 +110,9 @@ class Step4 extends React.Component {
                     onChange={this.handleChange}
                   ></input>
                 </div>
+                <p className="form__step__error">{this.state.streetErr}</p>
                 <div>
-                <label htmlFor="city">
-                  Miasto   </label>
+                  <label htmlFor="city">Miasto </label>
                   <input
                     className="form__step__content__address__input"
                     type="text"
@@ -66,36 +121,38 @@ class Step4 extends React.Component {
                     onChange={this.handleChange}
                   ></input>
                 </div>
-               <div>
-               <label htmlFor="postalCode">
-                  Kod pocztowy</label>
+                <p className="form__step__error">{this.state.cityErr}</p>
+                <div>
+                  <label htmlFor="postCode">Kod pocztowy</label>
                   <input
                     className="form__step__content__address__input"
                     type="text"
-                    id="postalCode"
-                    value={this.state.postalCode}
+                    id="postCode"
+                    value={this.state.postCode}
                     onChange={this.handleChange}
                   ></input>
-               </div>
-               <div>
-               <label htmlFor="telephone">
-                  Numer telefonu</label>
+                </div>
+                <p className="form__step__error">{this.state.postCodeErr}</p>
+                <div>
+                  <label htmlFor="telephone">Numer telefonu</label>
                   <input
-                   className="form__step__content__address__input"
+                    className="form__step__content__address__input"
                     type="text"
-                    id="telephone"
-                    value={this.state.telephone}
+                    id="phone"
+                    value={this.state.phone}
                     onChange={this.handleChange}
                   ></input>
-               </div>
+                </div>
+                <p className="form__step__error">{this.state.phoneErr}</p>
               </div>
               <div className="form__step__content__time">
-                <p className="form__step__content__time__title">Termin odbioru:</p>
+                <p className="form__step__content__time__title">
+                  Termin odbioru:
+                </p>
                 <div>
-                <label htmlFor="date">
-                  Data   </label>
+                  <label htmlFor="date">Data </label>
                   <input
-                  className="form__step__content__time__input"
+                    className="form__step__content__time__input"
                     type="text"
                     id="date"
                     value={this.state.date}
@@ -103,8 +160,7 @@ class Step4 extends React.Component {
                   ></input>
                 </div>
                 <div>
-                <label htmlFor="hour">
-                  Godzina</label>
+                  <label htmlFor="hour">Godzina</label>
                   <input
                     className="form__step__content__time__input"
                     type="text"
@@ -114,8 +170,7 @@ class Step4 extends React.Component {
                   ></input>
                 </div>
                 <div>
-                <label htmlFor="notes">
-                  Uwagi dla kuriera</label>
+                  <label htmlFor="notes">Uwagi dla kuriera</label>
                   <textarea
                     rows="4"
                     className="form__step__content__textarea"
@@ -140,6 +195,7 @@ class Step4 extends React.Component {
               className="form__step__btn form__step__btn-next"
               id="3"
               onClick={this.handleClickNext}
+              // disabled={!this.state.streetErr || !this.state.cityErr || !this.state.postCodeErr}
             >
               Dalej
             </button>

@@ -10,7 +10,7 @@
 .form-banner__img-wrapper {
     background-image: url(../../assets/Form-Hero-Image.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: right;
     background-repeat: no-repeat;
     width: 100%;
     grid-column: 1/2;
@@ -28,6 +28,7 @@
 
     color: $font-color-dark;
     line-height: 1.5;
+    background-image: linear-gradient();
 }
 
 .form-banner__content__title {
@@ -46,47 +47,30 @@
 .form-banner__steps {
     margin-top: 2rem;
     display: flex;
-    position: relative;
 }
 
 .form-banner__step {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 8rem;
-    width: 7.85rem;
+    width: 8rem;
+   border: 0.05rem solid $font-color-dark;
+   transform: rotate(45deg);
 }
 
-.form-banner__step p {
+.form-banner__step__text {
     font-weight: 300;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    text-align: center;
+    transform: rotate(-45deg);
+}
+
+.form-banner__step__text span {
+    font-size: 1.75rem;
     text-align: center;
 }
 
-.form-banner__step-border {
-    height: 7rem;
-    width: 7rem;
-    border: 0.05rem solid $font-color-dark;
-    position: absolute;
-    transform: rotate(45deg);
-}
-
-.form-banner__step-border-1 {
-    left: 0;
-    top: 0;
-}
-
-.form-banner__step-border-2 {
-    left: 8rem;
-    top: 0;
-}
-
-.form-banner__step-border-3 {
-    left: 16rem;
-    top: 0;
-}
-
-.form-banner__step-border-4 {
-    left: 24rem;
-    top: 0;
-}
 
 
 

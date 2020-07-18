@@ -69,6 +69,7 @@ class Step3 extends React.Component {
     this.props.changeDisplayNext(e);
     this.props.addLocalization(this.state.selected);
     this.props.addHelpGroups(this.state.checked);
+    this.props.addSpecificLocalization(this.state.specificOrganisation)
   };
 
   render() {

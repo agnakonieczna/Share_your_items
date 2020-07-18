@@ -1,10 +1,10 @@
 import React from "react";
-import Step4 from "./Step4";
-import Summary from "./Summary";
 import ThankYou from "./ThankYou";
 import Step1Container from "../containers/Step1Container";
 import Step2Container from "../containers/Step2Container";
 import Step3Container from "../containers/Step3Container";
+import Step4Container from "../containers/Step4Container";
+import SummaryContainer from "../containers/SummaryContainer";
 
 class Form extends React.Component {
   constructor(props) {
@@ -119,13 +119,13 @@ class Form extends React.Component {
           />
         </div>
         <div style={{ display: this.state.displayStep4 }}>
-          <Step4
+          <Step4Container
             changeDisplayNext={this.handleClickNext4}
             changeDisplayBack={this.handleClickBack4}
           />
         </div>
         <div style={{ display: this.state.displaySummary }}>
-          <Summary 
+          <SummaryContainer
             changeDisplayBack={this.handleClickBack5}
           />
         </div>

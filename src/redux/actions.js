@@ -4,6 +4,8 @@ const ADD_TYPE = "ADD_TYPE";
 const ADD_BAGS = "ADD_BAGS";
 const ADD_LOCALIZATION = "ADD_LOCALIZATION";
 const ADD_HELP_GROUPS = "ADD_HELP_GROUPS";
+const ADD_LOCALIZATION_SPECIFIC = "ADD_LOCALIZATION_SPECIFIC";
+const ADD_ADDRESS_AND_TIME = "ADD_ADDRESS_AND_TIME";
 
 function userLogged(email) {
     return {
@@ -46,4 +48,19 @@ function addHelpGroups(helpGroups) {
     }
 }
 
-export {USER_LOGGED, USER_LOGGED_OUT, ADD_TYPE, ADD_BAGS, ADD_LOCALIZATION, ADD_HELP_GROUPS, userLogged, userLoggedOut, addType, addBags, addLocalization, addHelpGroups}
+function addSpecificLocalization(localization) {
+    return {
+        type: ADD_LOCALIZATION_SPECIFIC,
+        action: localization
+    }
+}
+
+function addAddressAndTime(addressAndTime) {
+    return {
+        type: ADD_ADDRESS_AND_TIME,
+        payload: addressAndTime
+        
+    }
+}
+
+export {USER_LOGGED, USER_LOGGED_OUT, ADD_TYPE, ADD_BAGS, ADD_LOCALIZATION, ADD_HELP_GROUPS, ADD_LOCALIZATION_SPECIFIC, ADD_ADDRESS_AND_TIME, userLogged, userLoggedOut, addType, addBags, addLocalization, addHelpGroups, addSpecificLocalization, addAddressAndTime}

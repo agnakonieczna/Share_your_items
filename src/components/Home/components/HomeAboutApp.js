@@ -60,9 +60,15 @@ class HomeAboutApp extends React.Component {
           </div>
         </div>
         <button className="about-app__btn">
-          <Link to="/logowanie">
-            Oddaj<br></br>rzeczy
-          </Link>
+        {this.props.authUser ? (
+                  <Link to="/oddaj-rzeczy">
+                    Oddaj<br></br>rzeczy
+                  </Link>
+                ) : (
+                  <Link to="/logowanie">
+                    Oddaj<br></br>rzeczy
+                  </Link>
+                )}
         </button>
       </section>
     );

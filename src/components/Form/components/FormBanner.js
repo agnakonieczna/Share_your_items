@@ -22,20 +22,16 @@ class FormBanner extends React.Component {
             <h1 className="form-banner__content__title">Wystarczą 4 proste kroki:</h1>
             <div className="form-banner__steps">
               <div className="form-banner__step">
-                <p>1<br></br>Wybierz<br></br>rzeczy</p>
-                <div className="form-banner__step-border form-banner__step-border-1"></div>
+                <p className="form-banner__step__text"><span>1</span><br></br>Wybierz<br></br>rzeczy</p>
               </div>
               <div className="form-banner__step">
-                <p className="form-banner__step">2<br></br>Spakuj je<br></br>w worki</p>
-                <div className="form-banner__step-border form-banner__step-border-2"></div>
+                <p className="form-banner__step__text"><span>2</span><br></br>Spakuj je<br></br>w worki</p>
               </div>
               <div className="form-banner__step">
-                <p className="form-banner__step">3<br></br>Wybierz<br></br>fundację</p>
-                <div className="form-banner__step-border form-banner__step-border-3"></div>
+                <p className="form-banner__step__text"><span>3</span><br></br>Wybierz<br></br>fundację</p>
               </div>   
               <div className="form-banner__step">
-                <p className="form-banner__step">4<br></br>Zamów<br></br>kuriera</p>
-                <div className="form-banner__step-border form-banner__step-border-4"></div>
+                <p className="form-banner__step__text"><span>4</span><br></br>Zamów<br></br>kuriera</p>
               </div>
             </div>
           </div>
