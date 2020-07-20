@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
-import HomeNavigationNonAuth from './Home/components/HomeNavigationNonAuth';
-import decoration from "../assets/Decoration.svg";
+import HomeNavigationNonAuth from '../Home/components/HomeNavigationNonAuth';
+import decoration from "../../assets/Decoration.svg";
 
 function Logout() {
   return (

@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import {userLogged, userLoggedOut} from '../redux/actions';
-import Login from "./Login";
+import {userLogged, userLoggedOut} from '../../redux/actions';
+import Register from "./Register";
 
 function mapDispatch(dispatch) {
     return {
@@ -9,4 +9,4 @@ function mapDispatch(dispatch) {
     }
 }
 
-export default connect(null, mapDispatch)(Login);
+export default connect(null, mapDispatch)(Register);
