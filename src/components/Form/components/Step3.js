@@ -5,13 +5,13 @@ class Step3 extends React.Component {
     super(props);
     this.state = {
       selected: "",
-      kids: false,
+      kids: true,
       singleMothers: false,
       homeless: false,
       disabled: false,
       elderly: false,
-      checked: [],
-      checkedErr: "Przynajmiej jedno pole musi zostać zaznaczone!",
+      checked: ["kids"],
+      checkedErr: "",
       specificOrganisation: "",
     };
   }
@@ -104,59 +104,81 @@ class Step3 extends React.Component {
             </h2>
             <div className="form__step__content__checkboxes">
               <div className="form__step__content__checkboxes__row">
-              <label className="form__step__content__checkbox" htmlFor="kids">dzieciom
-                <input
-                  className="hidden"
-                  type="checkbox"
-                  checked={this.state.kids}
-                  onChange={this.checkboxSelection}
-                  id="kids"
-                ></input>
-              </label>
-              <label className="form__step__content__checkbox" htmlFor="singleMothers">
-                samotnym matkom
-                <input
-                  className="hidden"
-                  type="checkbox"
-                  checked={this.state.singleMothers}
-                  onChange={this.checkboxSelection}
-                  id="singleMothers"
-                ></input>
-              </label>
-              <label className="form__step__content__checkbox" htmlFor="homeless">
-                bezdomnym
-                <input
-                  className="hidden"
-                  type="checkbox"
-                  checked={this.state.homeless}
-                  onChange={this.checkboxSelection}
-                  id="homeless"
-                ></input>
-              </label>
+                <div className="form__step__content__checkbox">
+                  <label
+                    htmlFor="kids"
+                  >
+                    <input
+                      className="hidden"
+                      type="checkbox"
+                      checked={this.state.kids}
+                      onChange={this.checkboxSelection}
+                      id="kids"
+                    ></input>
+                    <span>dzieciom</span>
+                  </label>
+                </div>
+                <div className="form__step__content__checkbox">
+                <label
+                  htmlFor="singleMothers"
+                >
+                  <input
+                    className="hidden"
+                    type="checkbox"
+                    checked={this.state.singleMothers}
+                    onChange={this.checkboxSelection}
+                    id="singleMothers"
+                  ></input>
+                  <span>samotnym matkom</span>
+                </label>
+                </div>
+                <div className="form__step__content__checkbox">
+                <label
+                  htmlFor="homeless"
+                >
+                  <input
+                    className="hidden"
+                    type="checkbox"
+                    checked={this.state.homeless}
+                    onChange={this.checkboxSelection}
+                    id="homeless"
+                  ></input>
+                  <span>bezdomnym</span>
+                </label>
+                </div>
               </div>
-              <div>
-              <label className="form__step__content__checkbox" htmlFor="disabled">
-                niepełnosprawnym
-                <input
-                  className="hidden"
-                  type="checkbox"
-                  checked={this.state.disabled}
-                  onChange={this.checkboxSelection}
-                  id="disabled"
-                ></input>
-              </label>
-              <label className="form__step__content__checkbox" htmlFor="elderly">
-                osobom starszym
-                <input
-                  className="hidden"
-                  type="checkbox"
-                  checked={this.state.elderly}
-                  onChange={this.checkboxSelection}
-                  id="elderly"
-                ></input>
-              </label>
+              <div className="form__step__content__checkboxes__row">
+              <div className="form__step__content__checkbox">
+                <label
+                  htmlFor="disabled"
+                >
+                  <input
+                    className="hidden"
+                    type="checkbox"
+                    checked={this.state.disabled}
+                    onChange={this.checkboxSelection}
+                    id="disabled"
+                  ></input>
+                  <span>niepełnosprawnym</span>
+                </label>
+                </div>
+                <div className="form__step__content__checkbox">
+                <label
+                  className="form__step__content__checkbox"
+                  htmlFor="elderly"
+                >
+                  <input
+                    className="hidden"
+                    type="checkbox"
+                    checked={this.state.elderly}
+                    onChange={this.checkboxSelection}
+                    id="elderly"
+                  ></input>
+                  <span>osobom starszym</span>
+                </label>
+                </div>
+              </div>
               <p className="form__step__error">{this.state.checkedErr}</p>
-              </div>
             </div>
             <label
               className="form__step__content__title"

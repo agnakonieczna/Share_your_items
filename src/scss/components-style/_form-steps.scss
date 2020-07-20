@@ -108,10 +108,11 @@
 } 
 
 .form__step__content__checkboxes__row {
-    margin-bottom: 3rem;
+  display: flex;
+    margin-bottom: 2rem;
 }
 
-.form__step__content__checkbox {
+.form__step__content__checkbox span {
     border: 0.05rem solid $font-color-dark;
     padding: 0.5rem;
     margin-right: 1rem;
@@ -121,6 +122,10 @@
     position: absolute;
     visibility: hidden;
     opacity: 0;
+}
+
+.form__step__content__checkbox input:checked + span {
+  background-color: $decoration-light-color;
 }
 
 .form__step__error {
