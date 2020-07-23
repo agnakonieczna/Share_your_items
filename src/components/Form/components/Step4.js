@@ -70,6 +70,7 @@ class Step4 extends React.Component {
   // };
 
   handleClickNext = (e) => {
+    console.log(this.props.user.uid)
     this.props.changeDisplayNext(e);
     this.props.addAddressAndTime({
       street: this.state.street,

@@ -76,7 +76,7 @@ class Step3 extends React.Component {
     return (
       <>
         <div className="form__step__info">
-          <h1 className="form__step__info__title">Ważne!</h1>
+          <h2 className="form__step__info__title">Ważne!</h2>
           <p>
             Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej organizacji w
             wyszukiwarce. Możesz też filtrować organizacje<br></br> po ich

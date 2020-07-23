@@ -93,7 +93,8 @@ class Form extends React.Component {
 
   }
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault(e)
     const {
       user,
       bags,
@@ -108,18 +109,17 @@ class Form extends React.Component {
       hour,
     } = this.props;
 
-    this.props.firebase.forms().push({
-      user,
-      bags,
-      type,
-      localization,
-      helpGroups,
-      street,
-      city,
-      postCode,
-      phone,
-      date,
-      hour,
+    this.props.firebase.form(user.uid).set({
+      bags: bags,
+      type: type,
+      localization: localization,
+      helpGroups: helpGroups,
+      street: street,
+      city: city,
+      postCode: postCode,
+      phone: phone,
+      date: date,
+      hour: hour
     })
 
     this.setState({

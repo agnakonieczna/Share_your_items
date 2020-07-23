@@ -7,6 +7,15 @@ class HomeWhoWeSupportOne extends React.Component {
       currentPage: 1,
       itemsPerPage: 3,
     };
+    this.pagination = (number) => {
+      if(this.props.data.length > this.state.itemsPerPage) {
+        return (
+          <button className={this.state.currentPage === number ? "page-number page-number-border" : "page-number"} key={number} id={number} onClick={this.handleClick}>
+            {number}
+          </button>
+        )
+    }
+  }
   }
 
   handleClick = (e) => {
@@ -34,14 +43,8 @@ class HomeWhoWeSupportOne extends React.Component {
     }
 
     const renderPageNumbers = pageNumbers.map((number) => {
-      if(this.props.data.length > this.state.itemsPerPage) {
-        return (
-          <button className={this.state.currentPage === number ? "page-number page-number-border" : "page-number"} key={number} id={number} onClick={this.handleClick}>
-            {number}
-          </button>
-        );
-      } 
-    });
+      return this.pagination(number)
+    })
 
     return (
       <div className="who-we-support-one">

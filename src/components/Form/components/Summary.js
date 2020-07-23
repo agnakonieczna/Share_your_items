@@ -3,6 +3,26 @@ import icon1 from "../../../assets/Icon-1.svg";
 import icon4 from "../../../assets/Icon-4.svg";
 
 class Summary extends React.Component {
+  constructor(props) {
+    super(props)
+    this.show = (el) => {
+      if (el === "kids") {
+        return <span>dzieciom </span>;
+      }
+      if (el === "singleMothers") {
+        return <span>samotnym matkom </span>;
+      }
+      if (el === "homeless") {
+        return <span>bezdomnym </span>;
+      }
+      if (el === "disabled") {
+        return <span>niepełnosprawnym </span>;
+      }
+      if (el === "elderly") {
+        return <span>osobom starszym </span>;
+      }
+    }
+  }
   handleClickBack = (e) => {
     this.props.changeDisplayBack(e);
   };
@@ -37,25 +57,11 @@ class Summary extends React.Component {
                 alt="icon"
               ></img>
               <span>
-                {bags}{bags === "1" ? "worek" : ""}
+                {bags} {bags === "1" ? "worek" : ""}
                 {bags === "2" || bags === "3" ? "worki" : ""}
                 {bags === "5" ? "worków" : ""}, {type},
                 {helpGroups.map((el) => {
-                  if (el === "kids") {
-                    return <span>dzieciom </span>;
-                  }
-                  if (el === "singleMothers") {
-                    return <span>samotnym matkom </span>;
-                  }
-                  if (el === "homeless") {
-                    return <span>bezdomnym </span>;
-                  }
-                  if (el === "disabled") {
-                    return <span>niepełnosprawnym </span>;
-                  }
-                  if (el === "elderly") {
-                    return <span>osobom starszym </span>;
-                  }
+                  return this.show(el)
                 })}
               </span>
             </div>

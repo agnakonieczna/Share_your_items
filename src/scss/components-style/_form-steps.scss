@@ -15,10 +15,10 @@
 }
 
 .form__step__content {
-  height: 100vh;
+  height: calc(100vh - 2rem);
   background-image: url(../../assets/Background-Form.jpg);
   background-size: cover;
-  background-position: right;
+  background-position: center;
   font-size: 1.25rem;
   font-weight: 300;
   position: relative;

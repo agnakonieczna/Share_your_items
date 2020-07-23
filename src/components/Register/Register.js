@@ -66,6 +66,7 @@ class RegisterForm extends React.Component {
 
       this.props.firebase.doCreateUserWithEmailAndPassword(email, password)
       .then(authUser => {
+        console.log(authUser)
         return this.props.firebase
         .user(authUser.user.uid)
         .set({
