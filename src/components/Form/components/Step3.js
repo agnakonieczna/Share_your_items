@@ -4,44 +4,47 @@ class Step3 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: "",
-      kids: true,
-      singleMothers: false,
-      homeless: false,
-      disabled: false,
-      elderly: false,
-      checked: ["kids"],
+      localization: localStorage.getItem("selectedLocalization") || "",
+      helpGroups: [
+        { name: "dzieciom", checked: true },
+        { name: "samotnym matkom", checked: false },
+        { name: "bezdomnym", checked: false },
+        { name: "niepełnosprawnym", checked: false },
+        { name: "starszym osobom", checked: false },
+      ],
+      checked: JSON.parse(localStorage.getItem("selectedHelpGroups")) || ["dzieciom"],
       checkedErr: "",
-      specificOrganisation: "",
+      specificOrganisation: localStorage.getItem("selectedSpecificOrganisation") || "",
     };
   }
 
   localizactionSelect = (e) => {
     this.setState({
-      selected: e.target.value,
+      localization: e.target.value,
     });
+    localStorage.setItem("selectedLocalization", e.target.value);
   };
 
   checkboxSelection = (e) => {
-    this.setState({
-      [e.target.id]: e.target.checked,
+    let tempArr = [...this.state.helpGroups];
+
+    tempArr.forEach((el) => {
+      if(el.name === e.target.id) {
+        el.checked = el.checked ? false : true
+      }
     });
 
-    const checkedTempArr = [...this.state.checked];
-    let index;
+    this.setState({
+      helpGroups: tempArr
+    })
 
-    if (e.target.checked) {
-      checkedTempArr.push(e.target.id);
-    } else {
-      index = checkedTempArr.indexOf(e.target.id);
-      checkedTempArr.splice(index, 1);
-    }
+    const checkedTempArr = tempArr.filter(el => el.checked === true)
 
-    this.setState(
-      {
-        checked: checkedTempArr,
-      },
-      () => {
+    this.setState({
+      checked: checkedTempArr
+    }, () => {
+      localStorage.setItem("selectedHelpGroups", JSON.stringify(checkedTempArr));
+      console.log(checkedTempArr)
         if (this.state.checked.length > 0) {
           this.setState({
             checkedErr: "",
@@ -50,15 +53,15 @@ class Step3 extends React.Component {
           this.setState({
             checkedErr: "Przynajmiej jedno pole musi zostać zaznaczone!",
           });
-        }
       }
-    );
+    })
   };
 
   organisationInput = (e) => {
     this.setState({
       specificOrganisation: e.target.value,
     });
+    localStorage.setItem("selectedSpecificOrganisation", e.target.value);
   };
 
   handleClickBack = (e) => {
@@ -67,9 +70,9 @@ class Step3 extends React.Component {
 
   handleClickNext = (e) => {
     this.props.changeDisplayNext(e);
-    this.props.addLocalization(this.state.selected);
+    this.props.addLocalization(this.state.localization);
     this.props.addHelpGroups(this.state.checked);
-    this.props.addSpecificLocalization(this.state.specificOrganisation)
+    this.props.addSpecificLocalization(this.state.specificOrganisation);
   };
 
   render() {
@@ -88,7 +91,7 @@ class Step3 extends React.Component {
             <h2>Krok 3/4</h2>
             <h1 className="form__step__content__title">Lokalizacja:</h1>
             <select
-              value={this.state.selected}
+              value={this.state.localization}
               onChange={this.localizactionSelect}
               className="form__step__content__select"
             >
@@ -103,81 +106,22 @@ class Step3 extends React.Component {
               Komu chcesz pomóc?
             </h2>
             <div className="form__step__content__checkboxes">
-              <div className="form__step__content__checkboxes__row">
-                <div className="form__step__content__checkbox">
-                  <label
-                    htmlFor="kids"
-                  >
-                    <input
-                      className="hidden"
-                      type="checkbox"
-                      checked={this.state.kids}
-                      onChange={this.checkboxSelection}
-                      id="kids"
-                    ></input>
-                    <span>dzieciom</span>
-                  </label>
-                </div>
-                <div className="form__step__content__checkbox">
-                <label
-                  htmlFor="singleMothers"
-                >
-                  <input
-                    className="hidden"
-                    type="checkbox"
-                    checked={this.state.singleMothers}
-                    onChange={this.checkboxSelection}
-                    id="singleMothers"
-                  ></input>
-                  <span>samotnym matkom</span>
-                </label>
-                </div>
-                <div className="form__step__content__checkbox">
-                <label
-                  htmlFor="homeless"
-                >
-                  <input
-                    className="hidden"
-                    type="checkbox"
-                    checked={this.state.homeless}
-                    onChange={this.checkboxSelection}
-                    id="homeless"
-                  ></input>
-                  <span>bezdomnym</span>
-                </label>
-                </div>
-              </div>
-              <div className="form__step__content__checkboxes__row">
-              <div className="form__step__content__checkbox">
-                <label
-                  htmlFor="disabled"
-                >
-                  <input
-                    className="hidden"
-                    type="checkbox"
-                    checked={this.state.disabled}
-                    onChange={this.checkboxSelection}
-                    id="disabled"
-                  ></input>
-                  <span>niepełnosprawnym</span>
-                </label>
-                </div>
-                <div className="form__step__content__checkbox">
-                <label
-                  className="form__step__content__checkbox"
-                  htmlFor="elderly"
-                >
-                  <input
-                    className="hidden"
-                    type="checkbox"
-                    checked={this.state.elderly}
-                    onChange={this.checkboxSelection}
-                    id="elderly"
-                  ></input>
-                  <span>osobom starszym</span>
-                </label>
-                </div>
-              </div>
+              {this.state.helpGroups.map((el) => {
+                return (
+                  <div className="form__step__content__checkbox">
+                    <label htmlFor={el.name}>
+                      <input
+                        className="hidden"
+                        type="checkbox"
+                        checked={el.checked}
+                        onChange={this.checkboxSelection}
+                        id={el.name}
+                      ></input>
+                      <span>{el.name}</span>
+                    </label>
+                  </div>
+                );
+              })}
               <p className="form__step__error">{this.state.checkedErr}</p>
             </div>
             <label

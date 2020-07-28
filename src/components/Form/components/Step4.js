@@ -30,57 +30,70 @@ class Step4 extends React.Component {
     this.props.changeDisplayBack(e);
   };
 
-  // validate = () => {
-  //   let streetErr = "";
-  //   let cityErr = "";
-  //   let postCodeErr = "";
-  //   let phoneErr = "";
+  validate = () => {
+    let streetErr = "";
+    let cityErr = "";
+    let postCodeErr = "";
+    let phoneErr = "";
+    let dateErr = "";
+    let hourErr = "";
 
-  //   if (this.state.street.length < 2) {
-  //     streetErr = "Podana nazwa ulicy jest nieprawidłowa!";
-  //   }
+    if (this.state.street.length < 2) {
+      streetErr = "Podana nazwa ulicy jest nieprawidłowa!";
+    }
 
-  //   if (this.state.city.length < 2) {
-  //     cityErr = "Podana nazwa miasta jest nieprawidłowa!";
-  //   }
+    if (this.state.city.length < 2) {
+      cityErr = "Podana nazwa miasta jest nieprawidłowa!";
+    }
 
-  //   if (
-  //     typeof this.state.postCode !== "number" ||
-  //     this.state.postCode.length < 6 ||
-  //     this.state.postCode[2] !== "-"
-  //   ) {
-  //     postCodeErr = "Podany kod jest nieprawidłowy!";
-  //   }
+    if (
+      this.state.postCode.length < 6 ||
+      this.state.postCode[2] !== "-"
+    ) {
+      postCodeErr = "Podany kod jest nieprawidłowy!";
+    }
 
-  //   if (typeof this.state.phone !== "number" || this.state.phone.length > 9) {
-  //     phoneErr = "Podany numer telefonu jest nieprawidłowy!";
-  //   }
+    if (!this.state.phone || typeof +this.state.phone !== "number" || this.state.phone.length > 9) {
+      phoneErr = "Podany numer telefonu jest nieprawidłowy!";
+    }
 
-  //   if (streetErr || cityErr || postCodeErr || phoneErr) {
-  //     this.setState({
-  //       streetErr,
-  //       cityErr,
-  //       postCodeErr,
-  //       phoneErr,
-  //     });
-  //     return false;
-  //   }
+    if(!this.state.date) {
+      dateErr = "Podana data jest nieprawidłowa!"
+    }
 
-  //   return true;
-  // };
+    if(!this.state.hour) {
+      hourErr = "Podana godzina jest nieprawidłowa!"
+    }
+
+    if (streetErr || cityErr || postCodeErr || phoneErr || dateErr || hourErr) {
+      this.setState({
+        streetErr,
+        cityErr,
+        postCodeErr,
+        phoneErr,
+        dateErr,
+        hourErr
+      });
+      return false;
+    }
+
+    return true;
+  };
 
   handleClickNext = (e) => {
-    console.log(this.props.user.uid)
-    this.props.changeDisplayNext(e);
-    this.props.addAddressAndTime({
-      street: this.state.street,
-      city: this.state.city,
-      postCode: this.state.postCode,
-      phone: this.state.phone,
-      date: this.state.date,
-      hour: this.state.hour,
-      note: this.state.note
-    })
+    let isValid = this.validate()
+    if(isValid) {
+      this.props.changeDisplayNext(e);
+      this.props.addAddressAndTime({
+        street: this.state.street,
+        city: this.state.city,
+        postCode: this.state.postCode,
+        phone: this.state.phone,
+        date: this.state.date,
+        hour: this.state.hour,
+        note: this.state.note
+      })
+    }
   };
 
   render() {
@@ -160,6 +173,7 @@ class Step4 extends React.Component {
                     onChange={this.handleChange}
                   ></input>
                 </div>
+                <p className="form__step__error">{this.state.dateErr}</p>
                 <div>
                   <label htmlFor="hour">Godzina</label>
                   <input
@@ -170,6 +184,7 @@ class Step4 extends React.Component {
                     onChange={this.handleChange}
                   ></input>
                 </div>
+                <p className="form__step__error">{this.state.hourErr}</p>
                 <div>
                   <label htmlFor="notes">Uwagi dla kuriera</label>
                   <textarea
@@ -196,7 +211,6 @@ class Step4 extends React.Component {
               className="form__step__btn form__step__btn-next"
               id="3"
               onClick={this.handleClickNext}
-              // disabled={!this.state.streetErr || !this.state.cityErr || !this.state.postCodeErr}
             >
               Dalej
             </button>

@@ -1,22 +1,40 @@
-import React from "react";
+import React from 'react';
+import Select from 'react-select';
 
 class Step2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: "",
+      bags: localStorage.getItem('selectedBags') || "",
+      error: "",
+      options: [{
+        label: 1,
+        value: 1
+      },
+      {
+        label: 2,
+        value: 2
+      },
+      {
+        label: 3,
+        value: 3
+      },
+      {
+        label: 4,
+        value: 4
+      },
+      {
+        label: 5,
+        value: 5
+      }]
     };
   }
 
   handleChange = (e) => {
-    this.setState(
-      {
-        selected: e.target.value,
-      },
-      () => {
-        console.log(this.state.selected);
-      }
-    );
+    this.setState({
+      bags: this.state.options.value,
+    });
+    localStorage.setItem('selectedBags', e.target.value)
   };
 
   handleClickBack = (e) => {
@@ -24,11 +42,36 @@ class Step2 extends React.Component {
   };
 
   handleClickNext = (e) => {
-    this.props.changeDisplayNext(e);
-    this.props.addBags(this.state.selected)
+    if(!this.state.bags) {
+      this.setState({
+        error: "Jedno pole musi być wybrane!"
+      })
+    } else if(this.state.bags) {
+      this.props.changeDisplayNext(e);
+      this.props.addBags(this.state.bags);
+    }
   };
 
   render() {
+    const customStyles = {
+      control: (base, state) => ({
+        ...base,
+        background: "transparent",
+        borderColor: "black",
+        borderRadius: "none"
+      }),
+      valueContainer: (base, state) => ({
+        ...base,
+        background: "transparent",
+        borderColor: "black"
+      }),
+      multiValue: (base, state) => ({
+        ...base,
+        background: "lightYellow",
+        maxWidth: "100px"
+      })
+    };
+
     return (
       <>
         <div className="form__step__info">
@@ -40,32 +83,36 @@ class Step2 extends React.Component {
         </div>
         <div className="form__step__content">
           <div className="form__step__content__wrapper">
-          <h2>Krok 2/4</h2>
-          <h1 className="form__step__content__title">
-            Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:
-          </h1>
-          <label className="form__step__content__label" htmlFor="bags-select">
-            Liczba 60l worków:
-          </label>
-          <select
-            className="form__step__content__select"
-            id="bags-select"
-            value={this.state.selected}
-            onChange={this.handleChange}
-          >
-            <option>- wybierz -</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+            <h2>Krok 2/4</h2>
+            <h1 className="form__step__content__title">
+              Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:
+            </h1>
+            <label className="form__step__content__label" htmlFor="bags-select">
+              Liczba 60l worków:
+            </label>
+            <Select
+              styles={customStyles}
+              className="form__step__content__select"
+              id="bags-select"
+              value={this.state.bags}
+              onChange={this.handleChange}
+              options={this.state.options}
+            />
+            <p className="form__step__error">{this.state.error}</p>
           </div>
           <div>
-            <button className="form__step__btn form__step__btn-back" id="2" onClick={this.handleClickBack}>
+            <button
+              className="form__step__btn form__step__btn-back"
+              id="2"
+              onClick={this.handleClickBack}
+            >
               Wstecz
             </button>
-            <button className="form__step__btn form__step__btn-next" id="3" onClick={this.handleClickNext}>
+            <button
+              className="form__step__btn form__step__btn-next"
+              id="3"
+              onClick={this.handleClickNext}
+            >
               Dalej
             </button>
           </div>

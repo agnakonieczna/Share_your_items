@@ -43,28 +43,29 @@
 }
 
 .form__step__content__radio__input {
-    opacity: 0;
-    position: absolute;
+  opacity: 0;
+  position: absolute;
 }
 
 .form__step__content__radio__control {
-    position: relative;
-    display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-right: 1rem;
-    color: #017b5f;
-    vertical-align: middle;
-    background-color: inherit;
-    border: 0.0825rem solid $font-color-light;
+  position: relative;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+  color: #017b5f;
+  vertical-align: middle;
+  background-color: inherit;
+  border: 0.0825rem solid $font-color-light;
 }
 
-.form__step__content__radio__input:checked+.form__step__content__radio__control::after {
-    content: "";
-    display: block;
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: $decoration-light-color;
+.form__step__content__radio__input:checked
+  + .form__step__content__radio__control::after {
+  content: "";
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: $decoration-light-color;
 }
 
 .form__step__btn {
@@ -80,13 +81,13 @@
 }
 
 .form__step__btn-next {
-    top: 85%;
-    left: 12rem;
+  top: 85%;
+  left: 12rem;
 }
 
 .form__step__btn-back {
-    top: 85%;
-    left: 3rem;
+  top: 85%;
+  left: 3rem;
 }
 
 .form__step__content__label {
@@ -94,34 +95,36 @@
 }
 
 .form__step__content__select {
-    background: transparent;
-    font-family: "Open sans";
-    font-size: 1rem;
-    font-weight: 300;
-    width: 15rem;
-    height: 3rem;
-    margin-bottom: 2rem;
+  background: transparent;
+  font-family: "Open sans";
+  font-size: 1rem;
+  font-weight: 300;
+  width: 15rem;
+  height: 3rem;
+  margin-bottom: 2rem;
 }
 
 .form__step__content__checkboxes {
-    margin: 2rem 0;
-} 
+  width: 30rem;
+  margin-bottom: 2rem;
+}
 
-.form__step__content__checkboxes__row {
-  display: flex;
-    margin-bottom: 2rem;
+.form__step__content__checkbox {
+  display: inline;
 }
 
 .form__step__content__checkbox span {
-    border: 0.05rem solid $font-color-dark;
-    padding: 0.5rem;
-    margin-right: 1rem;
+  display: inline-block;
+  border: 0.05rem solid $font-color-dark;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
 }
 
 .hidden {
-    position: absolute;
-    visibility: hidden;
-    opacity: 0;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .form__step__content__checkbox input:checked + span {
@@ -129,10 +132,10 @@
 }
 
 .form__step__error {
-    color: $error-msg;
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-top: 1.5rem;
+  color: $error-msg;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
 }
 
 .form__step__content__input {
@@ -149,34 +152,38 @@
   justify-content: space-between;
 }
 
-.form__step__content__address, .form__step__content__time {
-    width: 47.5%;
+.form__step__content__address,
+.form__step__content__time {
+  width: 47.5%;
 }
 
-.form__step__content__address div,.form__step__content__time div {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1.5rem;
+.form__step__content__address div,
+.form__step__content__time div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
 }
 
-.form__step__content__address__title, .form__step__content__time__title {
-    font-weight: 600;
-    margin-bottom: 1rem;
+.form__step__content__address__title,
+.form__step__content__time__title {
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-.form__step__content__address__input, .form__step__content__time__input {
-    background-color: transparent;
-    border: 0.05rem solid $font-color-dark;
-    width: 50%;
-    height: 1.5rem;
-    font-family: "Open sans";
+.form__step__content__address__input,
+.form__step__content__time__input {
+  background-color: transparent;
+  border: 0.05rem solid $font-color-dark;
+  width: 50%;
+  height: 1.5rem;
+  font-family: "Open sans";
 }
 
 .form__step__content__textarea {
-    background-color: transparent;
-    border: 0.05rem solid $font-color-dark;
-    width: 50%;
-    font-family: "Open sans";
+  background-color: transparent;
+  border: 0.05rem solid $font-color-dark;
+  width: 50%;
+  font-family: "Open sans";
 }
 
 .form__step__content__summary__title {
@@ -200,11 +207,13 @@
   justify-content: space-between;
 }
 
-.form__step__content__summary__row-address, .form__step__content__summary__row-time {
+.form__step__content__summary__row-address,
+.form__step__content__summary__row-time {
   width: 40%;
 }
 
-.form__step__content__summary__row-address__row, .form__step__content__summary__row-time__row  {
+.form__step__content__summary__row-address__row,
+.form__step__content__summary__row-time__row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
@@ -224,9 +233,3 @@
 .form__step__content__thank-you__title {
   margin-bottom: 2rem;
 }
-
-
-
-
-
-

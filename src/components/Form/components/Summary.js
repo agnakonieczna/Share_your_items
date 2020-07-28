@@ -3,29 +3,13 @@ import icon1 from "../../../assets/Icon-1.svg";
 import icon4 from "../../../assets/Icon-4.svg";
 
 class Summary extends React.Component {
-  constructor(props) {
-    super(props)
-    this.show = (el) => {
-      if (el === "kids") {
-        return <span>dzieciom </span>;
-      }
-      if (el === "singleMothers") {
-        return <span>samotnym matkom </span>;
-      }
-      if (el === "homeless") {
-        return <span>bezdomnym </span>;
-      }
-      if (el === "disabled") {
-        return <span>niepełnosprawnym </span>;
-      }
-      if (el === "elderly") {
-        return <span>osobom starszym </span>;
-      }
-    }
-  }
   handleClickBack = (e) => {
     this.props.changeDisplayBack(e);
   };
+
+  handleSubmit = (e) => {
+    this.props.handleSubmit(e)
+  }
 
   render() {
     const {
@@ -61,7 +45,7 @@ class Summary extends React.Component {
                 {bags === "2" || bags === "3" ? "worki" : ""}
                 {bags === "5" ? "worków" : ""}, {type},
                 {helpGroups.map((el) => {
-                  return this.show(el)
+                  return <span>{el.name} </span>
                 })}
               </span>
             </div>
@@ -121,11 +105,12 @@ class Summary extends React.Component {
         >
           Wstecz
         </button>
-        <input
+        <button
+          onClick={this.handleSubmit}
           className="form__step__btn form__step__btn-next"
-          type="submit"
-          value="Potwierdzam"
-        />
+        >  
+        Potwierdzam
+        </button>
       </div>
     );
   }

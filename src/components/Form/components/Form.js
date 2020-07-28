@@ -11,90 +11,34 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayStep1: "block",
-      displayStep2: "none",
-      displayStep3: "none",
-      displayStep4: "none",
-      displaySummary: "none",
-      displayThankYou: "none",
+     currentStep: 1
     };
   }
 
-  handleClickNext1 = (e) => {
+  handleClickNext = (e) => {
     e.preventDefault();
 
     this.setState({
-      displayStep1: "none",
-      displayStep2: "block",
+      currentStep: this.state.currentStep + 1
     });
   };
 
-  handleClickBack2 = (e) => {
+  handleClickBack = (e) => {
     e.preventDefault();
 
     this.setState({
-      displayStep1: "block",
-      displayStep2: "none",
+      currentStep: this.state.currentStep - 1
     });
   };
 
-  handleClickNext2 = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      displayStep2: "none",
-      displayStep3: "block",
-    });
-  };
-
-  handleClickBack3 = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      displayStep2: "block",
-      displayStep3: "none",
-    });
-  };
-
-  handleClickNext3 = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      displayStep3: "none",
-      displayStep4: "block",
-    });
-  };
-
-  handleClickBack4 = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      displayStep3: "block",
-      displayStep4: "none",
-    });
-  };
-
-  handleClickNext4 = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      displayStep4: "none",
-      displaySummary: "block",
-    });
-  };
-
-  handleClickBack5 = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      displayStep4: "block",
-      displaySummary: "none",
-    });
-
-  }
 
   handleSubmit = (e) => {
     e.preventDefault(e)
+
+    this.setState({
+      currentStep: "thanks"
+    })
+
     const {
       user,
       bags,
@@ -122,44 +66,45 @@ class Form extends React.Component {
       hour: hour
     })
 
-    this.setState({
-      displaySummary: "none",
-      displayThankYou: "block"
-    })
+    localStorage.removeItem('selectedType');
+    localStorage.removeItem('selectedBags');
+    localStorage.removeItem('selectedLocalization');
+    localStorage.removeItem('selectedSpecificOrganisation');
+
   };
 
   render() {
+    const {currentStep} = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div style={{ display: this.state.displayStep1 }}>
-          <Step1Container changeDisplayNext={this.handleClickNext1} />
-        </div>
-        <div style={{ display: this.state.displayStep2 }}>
+      <form>
+        {currentStep === 1 && (
+          <Step1Container changeDisplayNext={this.handleClickNext} />
+        )}
+        {currentStep === 2 && (
           <Step2Container
-            changeDisplayNext={this.handleClickNext2}
-            changeDisplayBack={this.handleClickBack2}
+            changeDisplayNext={this.handleClickNext}
+            changeDisplayBack={this.handleClickBack}
           />
-        </div>
-        <div style={{ display: this.state.displayStep3 }}>
+        )}
+        {currentStep === 3 && (
           <Step3Container
-            changeDisplayNext={this.handleClickNext3}
-            changeDisplayBack={this.handleClickBack3}
+            changeDisplayNext={this.handleClickNext}
+            changeDisplayBack={this.handleClickBack}
           />
-        </div>
-        <div style={{ display: this.state.displayStep4 }}>
+        )}
+        {currentStep === 4 && (
           <Step4Container
-            changeDisplayNext={this.handleClickNext4}
-            changeDisplayBack={this.handleClickBack4}
+            changeDisplayNext={this.handleClickNext}
+            changeDisplayBack={this.handleClickBack}
           />
-        </div>
-        <div style={{ display: this.state.displaySummary }}>
+        )}
+        {currentStep === 5 && (
           <SummaryContainer
-            changeDisplayBack={this.handleClickBack5}
+            changeDisplayBack={this.handleClickBack}
+            handleSubmit={this.handleSubmit}
           />
-        </div>
-        <div style={{display: this.state.displayThankYou}}>
-          <ThankYou />
-        </div>
+        )}
+        {currentStep === "thanks" &&  <ThankYou /> }
       </form>
     );
   }
