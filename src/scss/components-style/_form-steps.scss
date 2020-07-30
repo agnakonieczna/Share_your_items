@@ -34,6 +34,7 @@
 }
 
 .form__step__content__title-step-3 {
+  margin-top: 1.5rem;
   font-weight: 600;
 }
 
@@ -90,18 +91,94 @@
   left: 3rem;
 }
 
-.form__step__content__label {
-  margin-right: 1rem;
+.form__step__content__select__wrapper {
+  display: flex;
 }
 
-.form__step__content__select {
-  background: transparent;
-  font-family: "Open sans";
-  font-size: 1rem;
-  font-weight: 300;
+.form__step__content__label {
+  margin-right: 1rem;
+  line-height: 2rem;
+}
+
+.form__step__content__select-step-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.form__step__content__select__input {
   width: 15rem;
-  height: 3rem;
-  margin-bottom: 2rem;
+  height: 2rem;
+  border: 0.05rem solid $font-color-dark;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form__step__content__select__input div {
+  margin-left: 1rem;
+}
+
+.form__step__content__select__arrow {
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+.form__step__content__select__arrow-up {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url(../../assets/Icon-Arrow-Up.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  top: 0;
+  left: -0.5rem;
+}
+
+.form__step__content__select__arrow-down {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url(../../assets/Icon-Arrow-Down.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  top: 0;
+  left: -0.5rem;
+}
+
+.form__step__content__select__drop-down-list-step-2, .form__step__content__select__drop-down-list-step-3 {
+  border: 0.05rem solid $font-color-dark;
+  font-family: "Open sans";
+  font-weight: 300;
+  background-color: #ebeae8;
+}
+
+.form__step__content__select__drop-down-list-step-2 {
+  text-align: center;
+  width: 5rem;
+}
+
+.form__step__content__select__drop-down-list-step-3 {
+  width: 15rem;
+  position: absolute;
+  z-index: 1;
+}
+
+.form__step__content__select__drop-down-list__item-step-2, .form__step__content__select__drop-down-list__item-step-3 {
+  margin: 0.25rem 0;
+  cursor: pointer;
+}
+
+.form__step__content__select__drop-down-list__item-step-3 {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .form__step__content__checkboxes {

@@ -70,6 +70,12 @@ class Form extends React.Component {
     localStorage.removeItem('selectedBags');
     localStorage.removeItem('selectedLocalization');
     localStorage.removeItem('selectedSpecificOrganisation');
+    localStorage.removeItem('street');
+    localStorage.removeItem('city');
+    localStorage.removeItem('postCode');
+    localStorage.removeItem('phone');
+    localStorage.removeItem('date');
+    localStorage.removeItem('hour');
 
   };
 

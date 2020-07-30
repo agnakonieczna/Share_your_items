@@ -44,8 +44,8 @@ class Summary extends React.Component {
                 {bags} {bags === "1" ? "worek" : ""}
                 {bags === "2" || bags === "3" ? "worki" : ""}
                 {bags === "5" ? "worków" : ""}, {type},
-                {helpGroups.map((el) => {
-                  return <span>{el.name} </span>
+                {helpGroups.map((el, index) => {
+                  return <span key={index}>{el.name} </span>
                 })}
               </span>
             </div>

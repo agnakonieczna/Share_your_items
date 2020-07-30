@@ -4,13 +4,16 @@ class Step3 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      localization: localStorage.getItem("selectedLocalization") || "",
+      localization: localStorage.getItem("selectedLocalization") || " – wybierz – ",
+      localizationErr: "",
+      localizations: [{value: "Poznań", id: 1}, {value: "Kraków", id: 2}, {value: "Warszawa", id: 3}, {value: "Kraków", id: 4}, {value: "Katowice", id: 5}, {value: "Wrocław", id: 6}], 
+      isShow: false,
       helpGroups: [
-        { name: "dzieciom", checked: true },
-        { name: "samotnym matkom", checked: false },
-        { name: "bezdomnym", checked: false },
-        { name: "niepełnosprawnym", checked: false },
-        { name: "starszym osobom", checked: false },
+        { name: "dzieciom", checked: true, id: 1 },
+        { name: "samotnym matkom", checked: false, id: 2 },
+        { name: "bezdomnym", checked: false, id: 3 },
+        { name: "niepełnosprawnym", checked: false, id: 4 },
+        { name: "starszym osobom", checked: false, id: 5 },
       ],
       checked: JSON.parse(localStorage.getItem("selectedHelpGroups")) || ["dzieciom"],
       checkedErr: "",
@@ -18,12 +21,21 @@ class Step3 extends React.Component {
     };
   }
 
-  localizactionSelect = (e) => {
+  localizactionSelect = (localization) => {
     this.setState({
-      localization: e.target.value,
+      localization: localization.value,
+      isShow: false,
+      localizationErr: ""
     });
-    localStorage.setItem("selectedLocalization", e.target.value);
+    localStorage.setItem("selectedLocalization", localization.value);
   };
+
+  dropDown = () => {
+    this.setState({
+      isShow: this.state.isShow ? false : true,
+      localizationErr: ""
+    })
+  }
 
   checkboxSelection = (e) => {
     let tempArr = [...this.state.helpGroups];
@@ -69,11 +81,21 @@ class Step3 extends React.Component {
   };
 
   handleClickNext = (e) => {
-    this.props.changeDisplayNext(e);
-    this.props.addLocalization(this.state.localization);
-    this.props.addHelpGroups(this.state.checked);
-    this.props.addSpecificLocalization(this.state.specificOrganisation);
-  };
+    if(this.state.localization === " – wybierz – ") {
+      this.setState({
+        localizationErr: "Pole musi być wybrane!"
+      })
+    } else {
+      this.setState({
+        localizationErr: ""
+      })
+      this.props.changeDisplayNext(e);
+      this.props.addLocalization(this.state.localization);
+      this.props.addHelpGroups(this.state.checked);
+      this.props.addSpecificLocalization(this.state.specificOrganisation);
+    };
+  }
+    
 
   render() {
     return (
@@ -90,25 +112,47 @@ class Step3 extends React.Component {
           <div className="form__step__content__wrapper">
             <h2>Krok 3/4</h2>
             <h1 className="form__step__content__title">Lokalizacja:</h1>
-            <select
-              value={this.state.localization}
-              onChange={this.localizactionSelect}
-              className="form__step__content__select"
-            >
-              <option>-wybierz-</option>
-              <option value="Poznań">Poznań</option>
-              <option value="Warszawa">Warszawa</option>
-              <option value="Kraków">Kraków</option>
-              <option value="Wrocław">Wrocław</option>
-              <option value="Katowice">Katowice</option>
-            </select>
+            <div className="form__step__content__select-step-3">
+                <div className="form__step__content__select__input">
+                  <div>{this.state.localization}</div>
+                  <div
+                    className="form__step__content__select__arrow"
+                    onClick={this.dropDown}
+                  >
+                    <span
+                      className={
+                        this.state.isShow
+                          ? "form__step__content__select__arrow-up"
+                          : "form__step__content__select__arrow-down"
+                      }
+                    ></span>
+                  </div>
+                </div>
+                <div
+                  className="form__step__content__select__drop-down-list-step-3"
+                  style={{ display: this.state.isShow ? "block" : "none" }}
+                >
+                  {this.state.localizations.map((localization) => {
+                    return (
+                      <div
+                        key={localization.id}
+                        onClick={() => this.localizactionSelect(localization)}
+                        className="form__step__content__select__drop-down-list__item-step-3"
+                      >
+                        {localization.value}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <p className="form__step__error">{this.state.localizationErr}</p>
             <h2 className="form__step__content__title-step-3">
               Komu chcesz pomóc?
             </h2>
             <div className="form__step__content__checkboxes">
               {this.state.helpGroups.map((el) => {
                 return (
-                  <div className="form__step__content__checkbox">
+                  <div key={el.id} className="form__step__content__checkbox">
                     <label htmlFor={el.name}>
                       <input
                         className="hidden"

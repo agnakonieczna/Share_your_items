@@ -1,40 +1,51 @@
-import React from 'react';
-import Select from 'react-select';
+import React from "react";
 
 class Step2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bags: localStorage.getItem('selectedBags') || "",
-      error: "",
-      options: [{
-        label: 1,
-        value: 1
-      },
-      {
-        label: 2,
-        value: 2
-      },
-      {
-        label: 3,
-        value: 3
-      },
-      {
-        label: 4,
-        value: 4
-      },
-      {
-        label: 5,
-        value: 5
-      }]
+      items: [
+        {
+          value: 1,
+          id: 1,
+        },
+        {
+          value: 2,
+          id: 2,
+        },
+        {
+          value: 3,
+          id: 3,
+        },
+        {
+          value: 4,
+          id: 4,
+        },
+        {
+          value: 5,
+          id: 5,
+        },
+      ],
+      isShow: false,
+      bags: localStorage.getItem("selectedBags") || "– wybierz –",
+      bagsErr: "",
     };
   }
 
-  handleChange = (e) => {
+  dropDown = () => {
     this.setState({
-      bags: this.state.options.value,
+      isShow: this.state.isShow ? false : true,
+      bagsErr: ""
     });
-    localStorage.setItem('selectedBags', e.target.value)
+  };
+
+  selectItem = (item) => {
+    this.setState({
+      bags: item.value,
+      isShow: false,
+    });
+    console.log("selected", this.state.bags);
+    localStorage.setItem("selectedBags", item.value);
   };
 
   handleClickBack = (e) => {
@@ -42,36 +53,20 @@ class Step2 extends React.Component {
   };
 
   handleClickNext = (e) => {
-    if(!this.state.bags) {
+    if (this.state.bags === "– wybierz –") {
       this.setState({
-        error: "Jedno pole musi być wybrane!"
-      })
-    } else if(this.state.bags) {
+        bagsErr: "Jedno pole musi być wybrane!",
+      });
+    } else {
+      this.setState({
+        bagsErr: "",
+      });
       this.props.changeDisplayNext(e);
       this.props.addBags(this.state.bags);
     }
   };
 
   render() {
-    const customStyles = {
-      control: (base, state) => ({
-        ...base,
-        background: "transparent",
-        borderColor: "black",
-        borderRadius: "none"
-      }),
-      valueContainer: (base, state) => ({
-        ...base,
-        background: "transparent",
-        borderColor: "black"
-      }),
-      multiValue: (base, state) => ({
-        ...base,
-        background: "lightYellow",
-        maxWidth: "100px"
-      })
-    };
-
     return (
       <>
         <div className="form__step__info">
@@ -87,18 +82,48 @@ class Step2 extends React.Component {
             <h1 className="form__step__content__title">
               Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:
             </h1>
-            <label className="form__step__content__label" htmlFor="bags-select">
-              Liczba 60l worków:
-            </label>
-            <Select
-              styles={customStyles}
-              className="form__step__content__select"
-              id="bags-select"
-              value={this.state.bags}
-              onChange={this.handleChange}
-              options={this.state.options}
-            />
-            <p className="form__step__error">{this.state.error}</p>
+            <div className="form__step__content__select__wrapper">
+              <label
+                className="form__step__content__label"
+                htmlFor="bags-select"
+              >
+                Liczba 60l worków:
+              </label>
+              <div className="form__step__content__select-step-2">
+                <div className="form__step__content__select__input">
+                  <div>{this.state.bags}</div>
+                  <div
+                    className="form__step__content__select__arrow"
+                    onClick={this.dropDown}
+                  >
+                    <span
+                      className={
+                        this.state.isShow
+                          ? "form__step__content__select__arrow-up"
+                          : "form__step__content__select__arrow-down"
+                      }
+                    ></span>
+                  </div>
+                </div>              
+                <div
+                  className="form__step__content__select__drop-down-list-step-2"
+                  style={{ display: this.state.isShow ? "block" : "none" }}
+                >
+                  {this.state.items.map((item) => {
+                    return (
+                      <div
+                        key={item.id}
+                        onClick={() => this.selectItem(item)}
+                        className="form__step__content__select__drop-down-list__item-step-2"
+                      >
+                        {item.value}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+            <p className="form__step__error">{this.state.bagsErr}</p>
           </div>
           <div>
             <button

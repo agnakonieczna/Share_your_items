@@ -5,13 +5,14 @@ class Step1 extends React.Component {
     super(props);
     this.state = {
       type: localStorage.getItem('selectedType') || "",
-      error: "",
+      typeErr: "",
     };
   }
 
   handleChange = (e) => {
     this.setState({
       type: e.target.value,
+      typeErr: ""
     });
     localStorage.setItem('selectedType', e.target.value)
   };
@@ -19,7 +20,7 @@ class Step1 extends React.Component {
   handleClick = (e) => {
     if(!this.state.type) {
       this.setState({
-        error: "Jedno pole musi być wybrane!",
+        typeErr: "Jedno pole musi być wybrane!",
       })
     } else {
       this.props.changeDisplayNext(e);
@@ -109,7 +110,7 @@ class Step1 extends React.Component {
               <span className="form__step__content__radio__control"></span>
               <span>inne</span>
             </label>
-            <p className="form__step__error">{this.state.error}</p>
+            <p className="form__step__error">{this.state.typeErr}</p>
           </div>
           <div>
             <button

@@ -4,19 +4,19 @@ class Step4 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      street: "",
+      street: localStorage.getItem("street") || "",
       streetErr: "",
-      city: "",
+      city: localStorage.getItem("city") || "",
       cityErr: "",
-      postCode: "",
+      postCode: localStorage.getItem("postCode") || "",
       postCodeErr: "",
-      phone: "",
+      phone: localStorage.getItem("phone") || "",
       phoneErr: "",
-      date: "",
+      date: localStorage.getItem("date") || "",
       dateErr: "",
-      hour: "",
+      hour: localStorage.getItem("hour") || "",
       hourErr: "",
-      notes: "",
+      notes: localStorage.getItem("notes") || "",
     };
   }
 
@@ -93,6 +93,13 @@ class Step4 extends React.Component {
         hour: this.state.hour,
         note: this.state.note
       })
+      localStorage.setItem("street", this.state.street);
+      localStorage.setItem("city", this.state.city);
+      localStorage.setItem("postCode", this.state.postCode);
+      localStorage.setItem("phone", this.state.phone);
+      localStorage.setItem("date", this.state.date);
+      localStorage.setItem("hour", this.state.hour);
+      localStorage.setItem("notes", this.state.notes);
     }
   };
 
